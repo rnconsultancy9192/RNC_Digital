@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Portfolio & Services | RN Consultancy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e293b; 
+            --bg-light: #f8fafc; 
+            --card-bg: rgba(255, 255, 255, 0.95); 
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --color-pf: #3b82f6;      
+            --color-dsc: #ec4899;     
+            --color-web: #10b981;     
+            --color-health: #ef4444;  
+            --color-vehicle: #8b5cf6; 
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        html, body { width: 100%; min-height: 100%; background-color: var(--bg-light); color: var(--text-main); line-height: 1.8; }
+
+        .page-content-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Glow Blobs - Matching Main Page */
+        .service-bg-glow {
+            position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.15; z-index: -1; pointer-events: none;
+        }
+        .blob-pf { width: 450px; height: 450px; background: var(--color-pf); top: -50px; left: -100px; }
+        .blob-web { width: 500px; height: 500px; background: var(--color-web); top: 35%; right: -100px; }
+        .blob-dsc { width: 400px; height: 400px; background: var(--color-dsc); bottom: 10%; left: -50px; }
+
+        /* Header Navigation */
+        header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border-bottom: 1px solid #e2e8f0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 25px; }
+        
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+        .brand-logo-icon { position: relative; width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), #0f172a); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(30, 41, 59, 0.15); overflow: hidden; transition: var(--transition); }
+        .brand-logo-icon::before { content: ''; position: absolute; inset: 1px; background: #ffffff; border-radius: 11px; z-index: 1; transition: var(--transition); }
+        .brand-logo-icon i { position: relative; z-index: 2; font-size: 20px; background: linear-gradient(135deg, var(--color-pf), var(--color-dsc)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .logo-text-area { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-title { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .logo-title span { background: linear-gradient(135deg, var(--color-pf), var(--color-web)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .back-btn { text-decoration: none; color: var(--text-main); padding: 10px 24px; font-weight: 600; font-size: 14px; border-radius: 50px; background: #ffffff; border: 2px solid #e2e8f0; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .back-btn:hover { border-color: var(--color-web); color: var(--color-web); transform: translateY(-2px); }
+
+        /* Hero Section */
+        .dev-hero { 
+            padding: 100px 25px 60px 25px; 
+            text-align: center; 
+            position: relative;
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.8), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .badge { background: rgba(16, 185, 129, 0.08); color: var(--color-web); border: 1px solid rgba(16, 185, 129, 0.15); padding: 6px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 25px; }
+        .dev-hero h1 { font-size: 52px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; color: var(--primary); letter-spacing: -1px; }
+        
+        /* Typewriter Animation CSS - Matching Index Theme */
+        .typewriter { 
+            background: linear-gradient(135deg, var(--color-web), var(--color-pf)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-weight: 800; 
+            border-right: 3px solid var(--color-web); 
+            padding-right: 5px; 
+            animation: blink 0.75s step-end infinite; 
+        }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--color-web); } }
+        
+        .dev-hero p { font-size: 18px; color: var(--text-main); max-width: 800px; margin: 0 auto 40px auto; font-weight: 500; }
+
+        /* Tech Stack Architecture Container */
+        .tech-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; max-width: 800px; margin: 0 auto 20px auto; }
+        .tech-tag { background: var(--card-bg); border: 1px solid #e2e8f0; padding: 10px 20px; border-radius: 14px; font-size: 14px; font-weight: 500; color: var(--text-main); display: flex; align-items: center; gap: 8px; transition: var(--transition); box-shadow: 0 4px 10px rgba(0,0,0,0.01); }
+        .tech-tag i { color: var(--color-web); }
+        .tech-tag:hover { background: #ffffff; transform: translateY(-3px); border-color: var(--color-web); box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1); }
+
+        /* Showcase Web Samples Matrix Grid */
+        .showcase-section { padding: 80px 25px 100px 25px; max-width: 1300px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 42px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
+        .section-header h2 span { background: linear-gradient(135deg, var(--color-web), var(--color-pf)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-header p { color: var(--text-muted); font-size: 17px; }
+
+        .samples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 40px; }
+        
+        /* Premium Mockup Browser Container Card */
+        .portfolio-card { 
+            background: var(--card-bg); 
+            border: 1px solid #e2e8f0; 
+            border-radius: 24px; 
+            overflow: hidden; 
+            box-shadow: 0 12px 35px rgba(30, 41, 59, 0.04); 
+            transition: var(--transition);
+        }
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-web);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+        }
+
+        /* Browser Window UI Header Top Simulation */
+        .browser-top {
+            background: #f1f5f9;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+        .dot-r { background: #ef4444; }
+        .dot-y { background: #fbbf24; }
+        .dot-g { background: #10b981; }
+        .browser-address {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            flex-grow: 1;
+            margin-left: 15px;
+            padding: 4px 15px;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Auto Scrolling Preview Frame */
+        .card-view-frame {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+        .card-view-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 4.5s ease-in-out;
+        }
+        .portfolio-card:hover .card-view-frame img {
+            transform: translateY(calc(-100% + 240px));
+        }
+
+        .card-meta-details { padding: 35px 30px; background: #ffffff; }
+        .card-meta-details h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; color: var(--primary); }
+        .card-meta-details p { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; min-height: 70px; }
+        
+        .tag-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+        .mini-tag { font-size: 11px; font-weight: 600; background: #f1f5f9; padding: 5px 14px; border-radius: 8px; color: var(--text-main); text-transform: uppercase; border: 1px solid #e2e8f0; }
+        
+        .live-preview-link { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: 600; 
+            font-size: 15px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: var(--transition);
+        }
+        .live-preview-link i { color: var(--color-web); transition: var(--transition); }
+        .live-preview-link:hover { color: var(--color-web); }
+        .live-preview-link:hover i { transform: translateX(5px) rotate(-45deg); }
+
+        /* High-conversion Call to Action Container Section */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border: 2px solid rgba(16, 185, 129, 0.15);
+            padding: 60px 40px;
+            border-radius: 32px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 60px auto 0 auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.01);
+        }
+        .cta-box h3 { font-size: 34px; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
+        .cta-box p { color: var(--text-muted); max-width: 630px; margin: 0 auto 30px auto; font-size: 16px; }
+        .cta-action-btn { text-decoration: none; background: linear-gradient(135deg, var(--color-web), var(--color-pf)); color: #fff; font-weight: 600; padding: 15px 45px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25); transition: var(--transition); border: none; cursor: pointer; font-size: 15px; }
+        .cta-action-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4); }
+
+        footer { text-align: center; color: var(--text-muted); padding: 40px 25px; font-size: 14px; border-top: 1px solid #e2e8f0; margin-top: 80px; background: #ffffff; }
+
+        @media(max-width: 768px) {
+            .dev-hero h1 { font-size: 34px; }
+            .section-header h2 { font-size: 30px; }
+            .cta-box { padding: 40px 20px; }
+            .cta-box h3 { font-size: 24px; }
+            .cta-action-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-content-wrapper">
+
+        <div class="service-bg-glow blob-pf"></div>
+        <div class="service-bg-glow blob-web"></div>
+        <div class="service-bg-glow blob-dsc"></div>
+
+        <header>
+            <div class="nav-container">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="brand-logo-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="logo-text-area">
+                        <div class="logo-title">RN <span>Web Studio</span></div>
+                    </div>
+                </a>
+                <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </header>
+
+        <section class="dev-hero">
+            <span class="badge">Next-Gen Web Architecture</span>
+            <h1>We Build Websites That <br><span class="typewriter" id="typewriter-text"></span></h1>
+            <p>High-speed performance architecture seamlessly integrated with breathtaking custom UI layouts to upscale your local business footprint.</p>
+            
+            <div class="tech-pills">
+                <div class="tech-tag"><i class="fa-brands fa-react"></i> React JS</div>
+                <div class="tech-tag"><i class="fa-brands fa-node-js"></i> Node.js</div>
+                <div class="tech-tag"><i class="fa-brands fa-html5"></i> HTML5 & CSS3</div>
+                <div class="tech-tag"><i class="fa-solid fa-bolt"></i> Next.js Ecosystem</div>
+                <div class="tech-tag"><i class="fa-solid fa-cloud"></i> AWS / Cloud Deploy</div>
+            </div>
+        </section>
+
+        <section class="showcase-section">
+            <div class="section-header">
+                <h2>Interactive <span>Web Samples</span></h2>
+                <p>Niche high-end business samples. Hover on the cards to see full live scrollable previews.</p>
+            </div>
+
+            <div class="samples-grid">
+                <div class="portfolio-card">
+                    <div class="browser-top">
+                        <span class="dot dot-r"></span>
+                        <span class="dot dot-y"></span>
+                        <span class="dot dot-g"></span>
+                        <div class="browser-address"><i class="fa-solid fa-lock"></i> https://retailtech-engine.rnweb.io</div>
+                    </div>
+                    <div class="card-view-frame">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="E-Commerce Sample Portfolio">
+                    </div>
+                    <div class="card-meta-details">
+                        <h3>E-Commerce Engine V3</h3>
+                        <p>Modern e-commerce platform featuring integrated product modules, fast micro-interactions, and instant secure payment gateway setups.</p>
+                        <div class="tag-pool">
+                            <span class="mini-tag">React.js</span>
+                            <span class="mini-tag">Tailwind CSS</span>
+                            <span class="mini-tag">REST APIs</span>
+                        </div>
+                        <a href="index.html#contact" class="live-preview-link">Launch Custom Setup <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="browser-top">
+                        <span class="dot dot-r"></span>
+                        <span class="dot dot-y"></span>
+                        <span class="dot dot-g"></span>
+                        <div class="browser-address"><i class="fa-solid fa-lock"></i> https://finanalytics-saas.rnweb.io</div>
+                    </div>
+                    <div class="card-view-frame">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="SaaS Analytical Dashboard Sample Portfolio">
+                    </div>
+                    <div class="card-meta-details">
+                        <h3>SaaS Analytical Matrix</h3>
+                        <p>Ultra-responsive metrics dashboard built for smart business tracking, quick sorting grids, visual report generations, and live filtering.</p>
+                        <div class="tag-pool">
+                            <span class="mini-tag">Next.js</span>
+                            <span class="mini-tag">Chart.js Nodes</span>
+                            <span class="mini-tag">Firebase</span>
+                        </div>
+                        <a href="index.html#contact" class="live-preview-link">Launch Custom Setup <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="browser-top">
+                        <span class="dot dot-r"></span>
+                        <span class="dot dot-y"></span>
+                        <span class="dot dot-g"></span>
+                        <div class="browser-address"><i class="fa-solid fa-lock"></i> https://luxuryestate-portal.rnweb.io</div>
+                    </div>
+                    <div class="card-view-frame">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop" alt="Corporate Agency Portal Sample Portfolio">
+                    </div>
+                    <div class="card-meta-details">
+                        <h3>Premium Corporate Portal</h3>
+                        <p>Immersive business landing page tailored for dynamic product showcases, showcasing beautiful smooth clean scroll layouts and local lead capture modules.</p>
+                        <div class="tag-pool">
+                            <span class="mini-tag">HTML5 Expert</span>
+                            <span class="mini-tag">CSS Grid Animation</span>
+                            <span class="mini-tag">UI/UX Engine</span>
+                        </div>
+                        <a href="index.html#contact" class="live-preview-link">Launch Custom Setup <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h3>Have A Custom Digital Project In Mind?</h3>
+                <p>Our web development studio can turn your custom ideas into a lightning-fast live website within 7 working days.</p>
+                <a href="index.html#contact" class="cta-action-btn">Kickstart Project Now <i class="fa-solid fa-rocket"></i></a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 RN Consultancy | Web Studio Department. All Technology Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const words = ["Convert Visitors Into Clients", "Grow Your Local Business", "Load In Under 1 Second"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const targetElement = document.getElementById("typewriter-text");
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                targetElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                targetElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1600; // Text displays fully before deleting
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400; // Brief rest before typing next word
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        
+        // Initializing the script cleanly
+        document.addEventListener("DOMContentLoaded", typeEffect);
+    </script>
+</body>
+</html>

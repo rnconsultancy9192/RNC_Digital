@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PF & ESIC Compliance Services | RN Consultancy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e293b; 
+            --bg-light: #f8fafc; 
+            --card-bg: rgba(255, 255, 255, 0.95); 
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --color-pf: #3b82f6;      /* Corporate Blue */
+            --color-esic: #ef4444;    /* Trust Red */
+            --color-success: #10b981;  /* Growth Green */
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        html, body { width: 100%; min-height: 100%; background-color: var(--bg-light); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
+
+        .page-content-wrapper { position: relative; width: 100%; }
+
+        /* Glow Blobs - Matching Index Theme */
+        .service-bg-glow {
+            position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.12; z-index: -1; pointer-events: none;
+        }
+        .blob-pf { width: 500px; height: 500px; background: var(--color-pf); top: -50px; left: -100px; }
+        .blob-esic { width: 500px; height: 500px; background: var(--color-esic); top: 40%; right: -100px; }
+        .blob-success { width: 400px; height: 400px; background: var(--color-success); bottom: 10%; left: -50px; }
+
+        /* Header Navigation */
+        header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border-bottom: 1px solid #e2e8f0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 25px; }
+        
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand-logo-icon { position: relative; width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), #0f172a); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(30, 41, 59, 0.15); overflow: hidden; }
+        .brand-logo-icon::before { content: ''; position: absolute; inset: 1px; background: #ffffff; border-radius: 11px; z-index: 1; }
+        .brand-logo-icon i { position: relative; z-index: 2; font-size: 20px; background: linear-gradient(135deg, var(--color-pf), var(--color-esic)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .logo-title { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .logo-title span { background: linear-gradient(135deg, var(--color-pf), var(--color-esic)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .back-btn { text-decoration: none; color: var(--text-main); padding: 10px 24px; font-weight: 600; font-size: 14px; border-radius: 50px; background: #ffffff; border: 2px solid #e2e8f0; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .back-btn:hover { border-color: var(--color-pf); color: var(--color-pf); transform: translateY(-2px); }
+
+        /* Hero Section */
+        .hero-section { 
+            padding: 100px 25px 80px 25px; 
+            text-align: center; 
+            position: relative;
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.85), rgba(255, 255, 255, 0.98)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .badge { background: rgba(59, 130, 246, 0.08); color: var(--color-pf); border: 1px solid rgba(59, 130, 246, 0.15); padding: 6px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 25px; }
+        .hero-section h1 { font-size: 50px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; color: var(--primary); letter-spacing: -1px; }
+        
+        /* Typewriter Animation Effect */
+        .typewriter { 
+            background: linear-gradient(135deg, var(--color-pf), var(--color-esic)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-weight: 800; 
+            border-right: 3px solid var(--color-pf); 
+            padding-right: 5px; 
+            animation: blink 0.75s step-end infinite; 
+        }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--color-pf); } }
+        
+        .hero-section p { font-size: 18px; color: var(--text-main); max-width: 800px; margin: 0 auto 40px auto; font-weight: 500; }
+
+        /* Info Grid Layout (Split-screen Style) */
+        .info-container { max-width: 1200px; margin: 0 auto; padding: 40px 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .info-text h2 { font-size: 36px; font-weight: 700; color: var(--primary); margin-bottom: 20px; }
+        .info-text h2 span { color: var(--color-pf); }
+        .info-text p { color: var(--text-muted); margin-bottom: 20px; font-size: 16px; }
+        
+        .info-image-wrapper { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); border: 4px solid #fff; transition: var(--transition); height: 380px; }
+        .info-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .info-image-wrapper:hover img { transform: scale(1.05); }
+
+        /* Service Cards Section */
+        .services-grid-section { padding: 80px 25px; max-width: 1300px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 40px; font-weight: 700; color: var(--primary); }
+        .section-header h2 span { background: linear-gradient(135deg, var(--color-pf), var(--color-esic)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .cards-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .compliance-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: var(--transition); position: relative; overflow: hidden; }
+        
+        .compliance-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--color-pf); transform: scaleX(0); transition: var(--transition); transform-origin: left; }
+        .compliance-card.esic-card::before { background: var(--color-esic); }
+        
+        .compliance-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(30,41,59,0.06); }
+        .compliance-card:hover::before { transform: scaleX(1); }
+        
+        .card-icon { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 25px; transition: var(--transition); }
+        .pf-icon { background: rgba(59, 130, 246, 0.08); color: var(--color-pf); }
+        .esic-icon { background: rgba(239, 68, 68, 0.08); color: var(--color-esic); }
+        
+        .compliance-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 15px; color: var(--primary); }
+        .compliance-card ul { list-style: none; }
+        .compliance-card ul li { position: relative; padding-left: 25px; margin-bottom: 12px; color: var(--text-muted); font-size: 15px; }
+        .compliance-card ul li i { position: absolute; left: 0; top: 5px; color: var(--color-success); font-size: 14px; }
+
+        /* Checklist / Process Section */
+        .process-section { background: #ffffff; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 80px 25px; }
+        .process-container { max-width: 1200px; margin: 0 auto; }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .process-step { text-align: center; position: relative; padding: 20px; }
+        .step-num { width: 50px; height: 50px; background: var(--primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; font-weight: 700; font-size: 18px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .process-step h4 { font-size: 18px; font-weight: 600; margin-bottom: 10px; color: var(--primary); }
+        .process-step p { font-size: 14px; color: var(--text-muted); }
+
+        /* Call to Action */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, rgba(239, 68, 68, 0.04) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.12);
+            padding: 60px 40px; border-radius: 32px; text-align: center; max-width: 1000px; margin: 60px auto 40px auto; backdrop-filter: blur(10px);
+        }
+        .cta-box h3 { font-size: 34px; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
+        .cta-box p { color: var(--text-muted); max-width: 630px; margin: 0 auto 30px auto; font-size: 16px; }
+        .cta-action-btn { text-decoration: none; background: linear-gradient(135deg, var(--color-pf), var(--color-esic)); color: #fff; font-weight: 600; padding: 15px 45px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2); transition: var(--transition); border: none; cursor: pointer; font-size: 15px; }
+        .cta-action-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(59, 130, 246, 0.35); }
+
+        footer { text-align: center; color: var(--text-muted); padding: 40px 25px; font-size: 14px; border-top: 1px solid #e2e8f0; margin-top: 40px; background: #ffffff; }
+
+        @media(max-width: 992px) {
+            .info-container { grid-template-columns: 1fr; gap: 40px; }
+            .info-image-wrapper { height: 300px; }
+        }
+        @media(max-width: 768px) {
+            .hero-section h1 { font-size: 34px; }
+            .section-header h2 { font-size: 30px; }
+            .cta-box { padding: 40px 20px; }
+            .cta-box h3 { font-size: 24px; }
+            .cta-action-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-content-wrapper">
+
+        <div class="service-bg-glow blob-pf"></div>
+        <div class="service-bg-glow blob-esic"></div>
+        <div class="service-bg-glow blob-success"></div>
+
+        <header>
+            <div class="nav-container">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="brand-logo-icon">
+                        <i class="fa-solid fa-building-shield"></i>
+                    </div>
+                    <div class="logo-title">RN <span>Compliance</span></div>
+                </a>
+                <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <span class="badge">100% Legal Security</span>
+            <h1>Zero Penalties, Full Peace of Mind <br><span class="typewriter" id="typewriter-text"></span></h1>
+            <p>End-to-end Provident Fund (PF) and Employee State Insurance (ESIC) management to keep your corporate architecture fully aligned with modern statutory laws.</p>
+        </section>
+
+        <section class="info-container">
+            <div class="info-text">
+                <h2>Why Statutory Compliance <span>Matters?</span></h2>
+                <p>Labor legal frameworks and government regulations are highly stringent. Any failure or delays in depositing or filing monthly employee contributions can trigger heavy penalty financial rates and litigation hazards.</p>
+                <p>RN Consultancy seamlessly streamlines employee onboarding systems, updates monthly structural configurations, processes clean payroll audits, and structures precise online portal fillings without error overheads.</p>
+            </div>
+            <div class="info-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop" alt="Corporate Compliance and Financial Planning">
+            </div>
+        </section>
+
+        <section class="services-grid-section">
+            <div class="section-header">
+                <h2>Our Compliance <span>Expertise</span></h2>
+            </div>
+
+            <div class="cards-matrix">
+                <div class="compliance-card">
+                    <div class="card-icon pf-icon">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <h3>EPF Management</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-check"></i> Corporate Business Registrations</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Employee UAN Generation & KYC Audits</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Monthly PF Return Filings (ECR Setup)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Electronic Challan Management</li>
+                        <li><i class="fa-solid fa-circle-check"></i> PF Withdrawal & Asset Claims Support</li>
+                    </ul>
+                </div>
+
+                <div class="compliance-card esic-card">
+                    <div class="card-icon esic-icon">
+                        <i class="fa-solid fa-kit-medical"></i>
+                    </div>
+                    <h3>ESIC Management</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-check"></i> ESIC Corporate Registration Codes</li>
+                        <li><i class="fa-solid fa-circle-check"></i> IP Generation & Insurance (Pehchan Card)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Monthly Contribution Processing & Challans</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Half-Yearly Statutory Compliance Returns</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Accident Documentation & Claims Overheads</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <div class="process-container">
+                <div class="section-header" style="margin-bottom: 20px;">
+                    <h2>How We <span>Operate</span></h2>
+                    <p>Automate your monthly statutory compliance structure in 4 straightforward execution setups.</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-num">1</div>
+                        <h4>Data Gathering</h4>
+                        <p>Share your monthly workforce attendance metrics and payroll distributions with us.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">2</div>
+                        <h4>Calculations</h4>
+                        <p>Our audit experts evaluate exact mathematical distributions for PF/ESIC deductions.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">3</div>
+                        <h4>Challan Generation</h4>
+                        <p>Challans are generated via state portals and shared for easy settlement.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">4</div>
+                        <h4>Filing Execution</h4>
+                        <p>Instantly secure your validation logs, return forms, and processing proofs post-payment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-container">
+            <div class="cta-box">
+                <h3>Want To Prevent Legal Notice Risk & Penalties?</h3>
+                <p>Connect with RN Consultancy's legal framework specialists today and deploy a stress-free compliance lifecycle architecture.</p>
+                <a href="index.html#contact" class="cta-action-btn">Talk To Our Experts <i class="fa-solid fa-phone"></i></a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 RN Consultancy | Compliance Department. All Legal Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const words = ["Automate Monthly PF Returns", "Error-Free ESIC Filing", "Stay 100% Government Compliant"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const targetElement = document.getElementById("typewriter-text");
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                targetElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                targetElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1800; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400; 
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        
+        document.addEventListener("DOMContentLoaded", typeEffect);
+    </script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RN Consultancy | Services-Themed Dynamic Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e293b; 
+            --bg-light: #f8fafc; 
+            --card-bg: rgba(255, 255, 255, 0.95); 
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --color-pf: #3b82f6;      
+            --color-dsc: #ec4899;     
+            --color-web: #10b981;     
+            --color-health: #ef4444;  
+            --color-vehicle: #8b5cf6; 
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        html, body { width: 100%; min-height: 100%; background-color: var(--bg-light); color: var(--text-main); line-height: 1.8; }
+
+        .page-content-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Background Glow Blobs */
+        .service-bg-glow {
+            position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.15; z-index: -1; pointer-events: none;
+        }
+        .blob-pf { width: 450px; height: 450px; background: var(--color-pf); top: -50px; left: -100px; }
+        .blob-dsc { width: 400px; height: 400px; background: var(--color-dsc); top: 25%; right: -100px; }
+        .blob-web { width: 500px; height: 500px; background: var(--color-web); top: 50%; left: -100px; }
+        .blob-health { width: 400px; height: 400px; background: var(--color-health); top: 72%; right: -50px; }
+        .blob-vehicle { width: 400px; height: 400px; background: var(--color-vehicle); bottom: 10%; left: -50px; }
+
+        /* Header Navigation */
+        header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border-bottom: 1px solid #e2e8f0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 25px; }
+        
+        /* Logo Styling */
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
+        .brand-logo-icon { position: relative; width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), #0f172a); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(30, 41, 59, 0.15); overflow: hidden; transition: var(--transition); }
+        .brand-logo-icon::before { content: ''; position: absolute; inset: 1px; background: #ffffff; border-radius: 11px; z-index: 1; transition: var(--transition); }
+        .brand-logo-icon i { position: relative; z-index: 2; font-size: 20px; background: linear-gradient(135deg, var(--color-pf), var(--color-dsc)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; transition: var(--transition); }
+        .logo-text-area { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-title { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .logo-title span { background: linear-gradient(135deg, var(--color-pf), var(--color-web)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-subtitle { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-top: 2px; }
+        
+        .logo-wrapper:hover .brand-logo-icon { transform: translateY(-2px) rotate(-3deg); box-shadow: 0 12px 20px rgba(59, 130, 246, 0.2); background: linear-gradient(135deg, var(--color-pf), var(--color-dsc)); }
+        .logo-wrapper:hover .brand-logo-icon::before { background: var(--primary); }
+        .logo-wrapper:hover .brand-logo-icon i { background: linear-gradient(135deg, #ffffff, #f1f5f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; transform: scale(1.1); }
+
+        .nav-links { display: flex; gap: 5px; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); padding: 8px 18px; font-weight: 500; font-size: 15px; border-radius: 50px; transition: var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--color-pf); background: rgba(59, 130, 246, 0.05); }
+
+        /* Hero Section with Premium Abstract BG */
+        .hero { 
+            min-height: 85vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            padding: 80px 25px; 
+            position: relative; 
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.85), rgba(255, 255, 255, 0.93)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .hero-content { max-width: 950px; position: relative; z-index: 5; }
+        .hero h1 { font-size: 56px; font-weight: 700; line-height: 1.2; margin-bottom: 25px; color: var(--primary); letter-spacing: -1px; }
+        
+        .typewriter { background: linear-gradient(135deg, var(--color-pf), var(--color-dsc), var(--color-vehicle)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; border-right: 3px solid var(--color-pf); padding-right: 5px; animation: blink 0.75s step-end infinite; }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--color-pf); } }
+        .hero p { font-size: 19px; color: var(--text-main); margin-bottom: 40px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 500; }
+
+        /* Buttons */
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 38px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 15px; transition: var(--transition); border: none; cursor: pointer; }
+        .btn-primary { background: linear-gradient(135deg, var(--color-pf), var(--color-vehicle)); color: #fff; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4); }
+        .btn-secondary { background-color: #ffffff; color: var(--primary); border: 2px solid #e2e8f0; margin-left: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .btn-secondary:hover { border-color: var(--primary); background: #fafafa; transform: translateY(-3px); }
+
+        /* Services Grid Styling */
+        .services { padding: 100px 25px; max-width: 1300px; margin: 0 auto; text-align: center; }
+        .section-title { margin-bottom: 70px; }
+        .section-title h2 { font-size: 44px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
+        .section-title p { font-size: 17px; color: var(--text-muted); }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
+        
+        /* FIXED & UPDATED: High Animation Glassmorphic Cards with Background Images */
+        .service-card { 
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e2e8f0; 
+            padding: 50px 35px; 
+            border-radius: 28px; 
+            text-align: left; 
+            overflow: hidden; 
+            box-shadow: 0 12px 35px rgba(30, 41, 59, 0.04); 
+            transition: var(--transition);
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        /* Image Layer inside the card */
+        .card-image-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            transform: scale(1.02);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.03; /* Subtle hidden view by default */
+        }
+
+        /* Gradient Tint overlay Layer */
+        .card-tint-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 60%, rgba(255,255,255,0.95) 100%);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        /* Card Hover Animations Matrix */
+        .service-card:hover { 
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);
+            border-color: transparent;
+        }
+        
+        .service-card:hover .card-image-bg {
+            transform: scale(1.12);
+            opacity: 0.12; /* Enhances visual depth when active */
+        }
+
+        /* Custom Hover Colors Injection via Overlays */
+        .card-pf:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(59, 130, 246, 0.08) 100%); }
+        .card-dsc:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(236, 72, 153, 0.08) 100%); }
+        .card-web:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(16, 185, 129, 0.08) 100%); }
+        .card-health:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(239, 68, 68, 0.08) 100%); }
+        .card-vehicle:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(139, 92, 246, 0.08) 100%); }
+
+        /* Icon Box Setup inside cards */
+        .icon-box { 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 28px; 
+            margin-bottom: 30px; 
+            transition: var(--transition); 
+            background: #f1f5f9;
+        }
+        
+        .card-pf .icon-box { color: var(--color-pf); background: rgba(59, 130, 246, 0.06); }
+        .card-pf:hover { border-bottom: 4px solid var(--color-pf); }
+        .card-pf:hover .icon-box { background: var(--color-pf); color: #fff; transform: rotateY(360deg); }
+
+        .card-dsc .icon-box { color: var(--color-dsc); background: rgba(236, 72, 153, 0.06); }
+        .card-dsc:hover { border-bottom: 4px solid var(--color-dsc); }
+        .card-dsc:hover .icon-box { background: var(--color-dsc); color: #fff; transform: rotateY(360deg); }
+
+        .card-web .icon-box { color: var(--color-web); background: rgba(16, 185, 129, 0.06); }
+        .card-web:hover { border-bottom: 4px solid var(--color-web); }
+        .card-web:hover .icon-box { background: var(--color-web); color: #fff; transform: rotateY(360deg); }
+
+        .card-health .icon-box { color: var(--color-health); background: rgba(239, 68, 68, 0.06); }
+        .card-health:hover { border-bottom: 4px solid var(--color-health); }
+        .card-health:hover .icon-box { background: var(--color-health); color: #fff; transform: rotateY(360deg); }
+
+        .card-vehicle .icon-box { color: var(--color-vehicle); background: rgba(139, 92, 246, 0.06); }
+        .card-vehicle:hover { border-bottom: 4px solid var(--color-vehicle); }
+        .card-vehicle:hover .icon-box { background: var(--color-vehicle); color: #fff; transform: rotateY(360deg); }
+
+        .service-card h3 { font-size: 23px; color: var(--primary); margin-bottom: 12px; font-weight: 600; transition: var(--transition); }
+        .service-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 25px; min-height: 75px; }
+        
+        .read-more { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
+        .card-pf .read-more { color: var(--color-pf); }
+        .card-dsc .read-more { color: var(--color-dsc); }
+        .card-web .read-more { color: var(--color-web); }
+        .card-health .read-more { color: var(--color-health); }
+        .card-vehicle .read-more { color: var(--color-vehicle); }
+        .read-more i { transition: var(--transition); }
+        .read-more:hover i { transform: translateX(6px); }
+
+        /* Contact Section Structure */
+        .contact-section { padding: 100px 25px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(15px); border-top: 1px solid #e2e8f0; position: relative; }
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; max-width: 1300px; margin: 0 auto; align-items: center; }
+        .contact-info h2 { font-size: 44px; font-weight: 700; color: var(--primary); margin-bottom: 20px; }
+        .contact-info h2 span { background: linear-gradient(135deg, var(--color-pf), var(--color-dsc)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .contact-info p { color: var(--text-muted); margin-bottom: 40px; }
+        
+        .info-item { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
+        .info-item i { font-size: 20px; color: var(--color-pf); background: rgba(59, 130, 246, 0.05); width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 50px; border: 1px solid rgba(59, 130, 246, 0.1); }
+        
+        .contact-container { background: rgba(248, 250, 252, 0.95); padding: 45px; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: 0 20px 40px rgba(0,0,0,0.02); }
+        .form-group { margin-bottom: 22px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 14px; color: var(--primary); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 18px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 15px; transition: var(--transition); background: #ffffff; color: var(--primary); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--color-pf); outline: none; box-shadow: 0 0 15px rgba(59, 130, 246, 0.15); }
+        .form-group textarea { height: 110px; resize: vertical; }
+
+        footer { background: var(--primary); color: #94a3b8; text-align: center; padding: 35px; font-size: 14px; position: relative; z-index: 2; border-top: 1px solid #e2e8f0; }
+        
+        @media (max-width: 992px) { .contact-wrapper { grid-template-columns: 1fr; gap: 40px; } .hero h1 { font-size: 38px; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero { padding: 50px 15px; } .btn-secondary { margin-left: 0; margin-top: 15px; width: 100%; } .btn-primary { width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <div class="page-content-wrapper">
+
+        <div class="service-bg-glow blob-pf"></div>
+        <div class="service-bg-glow blob-dsc"></div>
+        <div class="service-bg-glow blob-web"></div>
+        <div class="service-bg-glow blob-health"></div>
+        <div class="service-bg-glow blob-vehicle"></div>
+
+        <header>
+            <div class="nav-container">
+                <a href="#hero" class="logo-wrapper">
+                    <div class="brand-logo-icon">
+                        <i class="fa-solid fa-arrows-to-dot"></i>
+                    </div>
+                    <div class="logo-text-area">
+                        <div class="logo-title">RN <span>Consultancy</span></div>
+                        <div class="logo-subtitle">Corporate & IT Solutions</div>
+                    </div>
+                </a>
+                
+                <nav class="nav-links" id="nav-menu">
+                    <a href="#hero" class="nav-item active">Home</a>
+                    <a href="#services" class="nav-item">Services</a>
+                    <a href="#contact" class="nav-item">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Accelerate Business <br><span class="typewriter" id="typewriter-text"></span></h1>
+                <p>India's trusted digital partner for specialized corporate services, official filings, quick web deployment, and full-spectrum insurance solutions.</p>
+                <div>
+                    <a href="#contact" class="btn btn-primary" onclick="setService('General Quotation')"><i class="fa-solid fa-paper-plane"></i> Get A Quote</a>
+                    <a href="#services" class="btn btn-secondary"><i class="fa-solid fa-bolt"></i> View All Services</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="section-title">
+                <h2>Our Integrated Solutions</h2>
+                <p>Explore specialized services categorized cleanly with dedicated professional expertise.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card card-pf">
+                    <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="card-tint-overlay"></div>
+                    
+                    <div class="icon-box"><i class="fa-solid fa-users-gear"></i></div>
+                    <h3>PF & ESIC Compliance</h3>
+                    <p>Seamless labor department management including effortless registrations, monthly challans, and employee KYC linkage.</p>
+                    <a href="pf-esic.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card card-dsc">
+                    <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="card-tint-overlay"></div>
+                    
+                    <div class="icon-box"><i class="fa-solid fa-file-signature"></i></div>
+                    <h3>Digital Signature (DSC)</h3>
+                    <p>Get secure Class 3 Digital Signature Certificates issued instantly for hassle-free e-tendering and corporate documentation.</p>
+                    <a href="dsc.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card card-web">
+                    <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="card-tint-overlay"></div>
+                    
+                    <div class="icon-box"><i class="fa-solid fa-code"></i></div>
+                    <h3>Web Development</h3>
+                    <p>Launch high-speed, dynamic, and clean custom web architectures optimized to significantly grow your local business footprint.</p>
+                    <a href="web-dev.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card card-health">
+                    <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="card-tint-overlay"></div>
+                    
+                    <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3>Health Insurance</h3>
+                    <p>Protect your family's future with robust healthcare packages offering extensive cashless network benefits across top hospitals.</p>
+                    <a href="health-insurance.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="service-card card-vehicle">
+                    <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="card-tint-overlay"></div>
+                    
+                    <div class="icon-box"><i class="fa-solid fa-car"></i></div>
+                    <h3>Vehicle Insurance</h3>
+                    <p>Protect your mobility assets with instant car, bike, and commercial vehicle insurance plans featuring comprehensive coverage.</p>
+                    <a href="vehicle-insurance.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h2>Let's Start Your <br><span>Digital Transformation</span></h2>
+                    <p>Fill out our rapid response inquiry setup form, and our regional department managers will compile your estimates within 24 hours.</p>
+                    
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h4 style="color: var(--color-pf);">Email Corporate Desk</h4>
+                            <p style="margin:0;">rnconsultancy9192@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h4 style="color: var(--color-pf);">Call Helpline</h4>
+                            <p style="margin:0;">+91 8180088343</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-container">
+                    <h3 style="margin-bottom: 25px; font-weight: 600; color: var(--primary); text-align: center;">Inquiry & Quotation Form</h3>
+                    
+                    <form id="inquiryForm" action="https://formspree.io/f/mykaaryp" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="Full_Name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="Phone_Number" required placeholder="Enter your mobile number">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Select Service Required *</label>
+                            <select id="service" name="Requested_Service" required>
+                                <option value="">-- Choose a Service --</option>
+                                <option value="PF & ESIC">PF & ESIC Compliance</option>
+                                <option value="DSC">DSC (Digital Signature)</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="Health Insurance">Health Insurance</option>
+                                <option value="Vehicle Insurance">Vehicle Insurance</option>
+                                <option value="General Quotation">Get Custom Quotation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message / Specific Requirements</label>
+                            <textarea id="message" name="User_Message" placeholder="Describe your requirement here..."></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--color-pf), var(--color-dsc));">
+                            Submit Inquiry & Quote <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 RN Consultancy. All Corporate Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // 1. Typewriter Effect
+        const words = ["Growth & Success", "Future Security", "Legal Compliance"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const targetElement = document.getElementById("typewriter-text");
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                targetElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                targetElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1500; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500; 
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        // 2. Navigation Tracker Highlight
+        const sections = document.querySelectorAll('section, header');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= (sectionTop - 220)) {
+                    current = section.getAttribute('id') || 'hero';
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        function setService(serviceValue) {
+            const serviceDropdown = document.getElementById('service');
+            if(serviceDropdown && serviceValue) {
+                serviceDropdown.value = serviceValue;
+            }
+        }
+
+        // 3. Formspree submission handler
+        const form = document.getElementById("inquiryForm");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+            
+            if(form.action.includes("YOUR_FORM_ID_HERE")) {
+                alert("Developer Warning: Please update 'YOUR_FORM_ID_HERE' with your real Formspree ID!");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    alert("Thank you! Your inquiry has been sent safely. We will contact you soon.");
+                    form.reset();
+                } else {
+                    alert("Oops! There was a problem submitting your form.");
+                }
+            } catch (error) {
+                alert("Network error!");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Submit Inquiry & Quote <i class="fa-solid fa-paper-plane"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
