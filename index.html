@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RN Consultancy | Services-Themed Dynamic Design</title>
+    <title>RN Consultancy | Multi-Service Corporate Solutions</title>
+    <!-- Font Awesome for sleek icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary: #1e293b; 
-            --bg-light: #f8fafc; 
-            --card-bg: rgba(255, 255, 255, 0.95); 
+            --bg-light: #fdfdfd; 
+            --card-bg: rgba(255, 255, 255, 0.92); 
             --text-main: #334155;
             --text-muted: #64748b;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             
-            --color-pf: #3b82f6;      
-            --color-dsc: #ec4899;     
-            --color-web: #10b981;     
-            --color-health: #ef4444;  
-            --color-vehicle: #8b5cf6; 
+            /* Service Brand Colors Matrix */
+            --color-pf: #3b82f6;      /* Blue */
+            --color-dsc: #ec4899;     /* Pink */
+            --color-web: #10b981;     /* Green */
+            --color-health: #ef4444;  /* Red */
+            --color-vehicle: #8b5cf6; /* Purple */
+            --color-marketing: #fa5252; /* Coral/Orange */
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
@@ -33,21 +37,21 @@
             overflow: hidden;
         }
 
-        /* Background Glow Blobs */
+        /* Services Relevant Background Blobs */
         .service-bg-glow {
-            position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.15; z-index: -1; pointer-events: none;
+            position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.12; z-index: -1; pointer-events: none;
         }
         .blob-pf { width: 450px; height: 450px; background: var(--color-pf); top: -50px; left: -100px; }
-        .blob-dsc { width: 400px; height: 400px; background: var(--color-dsc); top: 25%; right: -100px; }
-        .blob-web { width: 500px; height: 500px; background: var(--color-web); top: 50%; left: -100px; }
-        .blob-health { width: 400px; height: 400px; background: var(--color-health); top: 72%; right: -50px; }
-        .blob-vehicle { width: 400px; height: 400px; background: var(--color-vehicle); bottom: 10%; left: -50px; }
+        .blob-dsc { width: 400px; height: 400px; background: var(--color-dsc); top: 22%; right: -100px; }
+        .blob-web { width: 480px; height: 450px; background: var(--color-web); top: 45%; left: -100px; }
+        .blob-health { width: 380px; height: 380px; background: var(--color-health); top: 68%; right: -50px; }
+        .blob-vehicle { width: 400px; height: 400px; background: var(--color-vehicle); bottom: 12%; left: -60px; }
 
-        /* Header Navigation */
+        /* Navigation Header */
         header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border-bottom: 1px solid #e2e8f0; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 25px; }
         
-        /* Logo Styling */
+        /* Modern Vector Logo System */
         .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
         .brand-logo-icon { position: relative; width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), #0f172a); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(30, 41, 59, 0.15); overflow: hidden; transition: var(--transition); }
         .brand-logo-icon::before { content: ''; position: absolute; inset: 1px; background: #ffffff; border-radius: 11px; z-index: 1; transition: var(--transition); }
@@ -65,7 +69,7 @@
         .nav-links a { text-decoration: none; color: var(--text-muted); padding: 8px 18px; font-weight: 500; font-size: 15px; border-radius: 50px; transition: var(--transition); }
         .nav-links a:hover, .nav-links a.active { color: var(--color-pf); background: rgba(59, 130, 246, 0.05); }
 
-        /* Hero Section with Premium Abstract BG */
+        /* Premium Business Image Background Hero */
         .hero { 
             min-height: 85vh; 
             display: flex; 
@@ -74,7 +78,7 @@
             text-align: center; 
             padding: 80px 25px; 
             position: relative; 
-            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.85), rgba(255, 255, 255, 0.93)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop');
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.86), rgba(255, 255, 255, 0.94)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -82,11 +86,12 @@
         .hero-content { max-width: 950px; position: relative; z-index: 5; }
         .hero h1 { font-size: 56px; font-weight: 700; line-height: 1.2; margin-bottom: 25px; color: var(--primary); letter-spacing: -1px; }
         
-        .typewriter { background: linear-gradient(135deg, var(--color-pf), var(--color-dsc), var(--color-vehicle)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; border-right: 3px solid var(--color-pf); padding-right: 5px; animation: blink 0.75s step-end infinite; }
+        /* Typewriter Animation CSS Container */
+        .typewriter { background: linear-gradient(135deg, var(--color-pf), var(--color-dsc), var(--color-web)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; border-right: 3px solid var(--color-pf); padding-right: 5px; animation: blink 0.75s step-end infinite; }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--color-pf); } }
         .hero p { font-size: 19px; color: var(--text-main); margin-bottom: 40px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 500; }
 
-        /* Buttons */
+        /* Corporate Gradient Buttons */
         .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 38px; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 15px; transition: var(--transition); border: none; cursor: pointer; }
         .btn-primary { background: linear-gradient(135deg, var(--color-pf), var(--color-vehicle)); color: #fff; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25); }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4); }
@@ -101,7 +106,7 @@
         
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; }
         
-        /* FIXED & UPDATED: High Animation Glassmorphic Cards with Background Images */
+        /* High Animation Graphical Cards with Image Layers */
         .service-card { 
             position: relative;
             background: #ffffff;
@@ -114,61 +119,25 @@
             transition: var(--transition);
             z-index: 1;
             cursor: pointer;
+            transform-style: preserve-3d;
         }
-
-        /* Image Layer inside the card */
         .card-image-bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-            transform: scale(1.02);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.03; /* Subtle hidden view by default */
+            position: absolute; inset: 0; background-size: cover; background-position: center; z-index: -2; transform: scale(1.02); transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0.03;
         }
+        .card-tint-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.98) 60%, rgba(255,255,255,0.95) 100%); z-index: -1; transition: var(--transition); }
 
-        /* Gradient Tint overlay Layer */
-        .card-tint-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.98) 60%, rgba(255,255,255,0.95) 100%);
-            z-index: -1;
-            transition: var(--transition);
-        }
+        .service-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12); border-color: transparent; }
+        .service-card:hover .card-image-bg { transform: scale(1.12); opacity: 0.13; }
 
-        /* Card Hover Animations Matrix */
-        .service-card:hover { 
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);
-            border-color: transparent;
-        }
-        
-        .service-card:hover .card-image-bg {
-            transform: scale(1.12);
-            opacity: 0.12; /* Enhances visual depth when active */
-        }
-
-        /* Custom Hover Colors Injection via Overlays */
+        /* Custom Hover Color Configurations */
         .card-pf:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(59, 130, 246, 0.08) 100%); }
         .card-dsc:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(236, 72, 153, 0.08) 100%); }
         .card-web:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(16, 185, 129, 0.08) 100%); }
         .card-health:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(239, 68, 68, 0.08) 100%); }
         .card-vehicle:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(139, 92, 246, 0.08) 100%); }
+        .card-marketing:hover .card-tint-overlay { background: linear-gradient(135deg, rgba(255,255,255,0.9) 30%, rgba(250, 82, 82, 0.08) 100%); }
 
-        /* Icon Box Setup inside cards */
-        .icon-box { 
-            width: 70px; 
-            height: 70px; 
-            border-radius: 20px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 28px; 
-            margin-bottom: 30px; 
-            transition: var(--transition); 
-            background: #f1f5f9;
-        }
+        .icon-box { width: 70px; height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 30px; transition: var(--transition); background: #f1f5f9; }
         
         .card-pf .icon-box { color: var(--color-pf); background: rgba(59, 130, 246, 0.06); }
         .card-pf:hover { border-bottom: 4px solid var(--color-pf); }
@@ -190,7 +159,11 @@
         .card-vehicle:hover { border-bottom: 4px solid var(--color-vehicle); }
         .card-vehicle:hover .icon-box { background: var(--color-vehicle); color: #fff; transform: rotateY(360deg); }
 
-        .service-card h3 { font-size: 23px; color: var(--primary); margin-bottom: 12px; font-weight: 600; transition: var(--transition); }
+        .card-marketing .icon-box { color: var(--color-marketing); background: rgba(250, 82, 82, 0.06); }
+        .card-marketing:hover { border-bottom: 4px solid var(--color-marketing); }
+        .card-marketing:hover .icon-box { background: var(--color-marketing); color: #fff; transform: rotateY(360deg); }
+
+        .service-card h3 { font-size: 23px; color: var(--primary); margin-bottom: 12px; font-weight: 600; }
         .service-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 25px; min-height: 75px; }
         
         .read-more { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 600; font-size: 15px; transition: var(--transition); }
@@ -199,6 +172,7 @@
         .card-web .read-more { color: var(--color-web); }
         .card-health .read-more { color: var(--color-health); }
         .card-vehicle .read-more { color: var(--color-vehicle); }
+        .card-marketing .read-more { color: var(--color-marketing); }
         .read-more i { transition: var(--transition); }
         .read-more:hover i { transform: translateX(6px); }
 
@@ -222,19 +196,21 @@
         footer { background: var(--primary); color: #94a3b8; text-align: center; padding: 35px; font-size: 14px; position: relative; z-index: 2; border-top: 1px solid #e2e8f0; }
         
         @media (max-width: 992px) { .contact-wrapper { grid-template-columns: 1fr; gap: 40px; } .hero h1 { font-size: 38px; } }
-        @media (max-width: 768px) { .nav-links { display: none; } .hero { padding: 50px 15px; } .btn-secondary { margin-left: 0; margin-top: 15px; width: 100%; } .btn-primary { width: 100%; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero { padding: 50px 15px; } .btn-secondary { margin-left: 0; margin-top: 15px; width: 100%; } .btn-primary { width: 100%; } .service-bg-glow { opacity: 0.08; filter: blur(90px); } }
     </style>
 </head>
 <body>
 
     <div class="page-content-wrapper">
 
+        <!-- BRAND SERVICE THEMED DYNAMIC BACKGROUND BLOBS -->
         <div class="service-bg-glow blob-pf"></div>
         <div class="service-bg-glow blob-dsc"></div>
         <div class="service-bg-glow blob-web"></div>
         <div class="service-bg-glow blob-health"></div>
         <div class="service-bg-glow blob-vehicle"></div>
 
+        <!-- Header Navigation Area -->
         <header>
             <div class="nav-container">
                 <a href="#hero" class="logo-wrapper">
@@ -255,10 +231,11 @@
             </div>
         </header>
 
+        <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="hero-content">
                 <h1>Accelerate Business <br><span class="typewriter" id="typewriter-text"></span></h1>
-                <p>India's trusted digital partner for specialized corporate services, official filings, quick web deployment, and full-spectrum insurance solutions.</p>
+                <p>India's trusted digital partner for specialized corporate compliances, authorized official identity filings, web engineering, and extensive insurance assets protection covers.</p>
                 <div>
                     <a href="#contact" class="btn btn-primary" onclick="setService('General Quotation')"><i class="fa-solid fa-paper-plane"></i> Get A Quote</a>
                     <a href="#services" class="btn btn-secondary"><i class="fa-solid fa-bolt"></i> View All Services</a>
@@ -266,6 +243,7 @@
             </div>
         </section>
 
+        <!-- Services Section -->
         <section id="services" class="services">
             <div class="section-title">
                 <h2>Our Integrated Solutions</h2>
@@ -273,76 +251,87 @@
             </div>
             
             <div class="services-grid">
+                <!-- Card 1 (PF & ESIC) -->
                 <div class="service-card card-pf">
                     <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop');"></div>
                     <div class="card-tint-overlay"></div>
-                    
                     <div class="icon-box"><i class="fa-solid fa-users-gear"></i></div>
                     <h3>PF & ESIC Compliance</h3>
-                    <p>Seamless labor department management including effortless registrations, monthly challans, and employee KYC linkage.</p>
+                    <p>Seamless labor department management including effortless corporate registrations, monthly challans, and employee KYC profile integrations.</p>
                     <a href="pf-esic.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Card 2 (DSC) -->
                 <div class="service-card card-dsc">
                     <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop');"></div>
                     <div class="card-tint-overlay"></div>
-                    
                     <div class="icon-box"><i class="fa-solid fa-file-signature"></i></div>
                     <h3>Digital Signature (DSC)</h3>
-                    <p>Get secure Class 3 Digital Signature Certificates issued instantly for hassle-free e-tendering and corporate documentation.</p>
+                    <p>Get secure CCA government-approved Class 3 Digital Signature Certificates issued instantly for hassle-free corporate e-tendering and official document stamping.</p>
                     <a href="dsc.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Card 3 (Web Dev) -->
                 <div class="service-card card-web">
                     <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop');"></div>
                     <div class="card-tint-overlay"></div>
-                    
                     <div class="icon-box"><i class="fa-solid fa-code"></i></div>
                     <h3>Web Development</h3>
-                    <p>Launch high-speed, dynamic, and clean custom web architectures optimized to significantly grow your local business footprint.</p>
+                    <p>Launch high-speed, interactive dynamic portfolio layouts and responsive custom systems optimized to scale up your brand equity multi-fold.</p>
                     <a href="web-dev.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Card 4 (Health Insurance) -->
                 <div class="service-card card-health">
                     <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop');"></div>
                     <div class="card-tint-overlay"></div>
-                    
                     <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
                     <h3>Health Insurance</h3>
-                    <p>Protect your family's future with robust healthcare packages offering extensive cashless network benefits across top hospitals.</p>
+                    <p>Protect your family's financial wellness with data-driven medical insurance advice offering robust cashless hospitalization benefits networks.</p>
                     <a href="health-insurance.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
+                <!-- Card 5 (Vehicle Insurance) -->
                 <div class="service-card card-vehicle">
                     <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600&auto=format&fit=crop');"></div>
                     <div class="card-tint-overlay"></div>
-                    
                     <div class="icon-box"><i class="fa-solid fa-car"></i></div>
                     <h3>Vehicle Insurance</h3>
-                    <p>Protect your mobility assets with instant car, bike, and commercial vehicle insurance plans featuring comprehensive coverage.</p>
+                    <p>Protect your critical mobility assets with immediate paperless comprehensive auto insurance generations or renewals at minimal premiums.</p>
                     <a href="vehicle-insurance.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Card 6 (Digital Marketing - FIXED LINK INTEGRATION) -->
+                <div class="service-card card-marketing">
+                    <div class="card-image-bg" style="background-image: url('https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="card-tint-overlay"></div>
+                    <div class="icon-box"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h3>Digital Marketing</h3>
+                    <p>Drive valuable local customer inquiries using high-conversion performance marketing, SEO keyword tracking, and Google/Meta ad funnels.</p>
+                    <a href="digital-marketing.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="contact-section">
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h2>Let's Start Your <br><span>Digital Transformation</span></h2>
-                    <p>Fill out our rapid response inquiry setup form, and our regional department managers will compile your estimates within 24 hours.</p>
+                    <p>Fill out our rapid response inquiry setup form below, and our regional specialist team managers will compile your estimates within 24 hours.</p>
                     
                     <div class="info-item">
                         <i class="fa-solid fa-envelope"></i>
                         <div>
                             <h4 style="color: var(--color-pf);">Email Corporate Desk</h4>
-                            <p style="margin:0;">rnconsultancy9192@gmail.com</p>
+                            <p style="margin:0;">info@rnconsultancy.com</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fa-solid fa-phone"></i>
                         <div>
                             <h4 style="color: var(--color-pf);">Call Helpline</h4>
-                            <p style="margin:0;">+91 8180088343</p>
+                            <p style="margin:0;">+91 98765 43210</p>
                         </div>
                     </div>
                 </div>
@@ -368,6 +357,7 @@
                                 <option value="Web Development">Web Development</option>
                                 <option value="Health Insurance">Health Insurance</option>
                                 <option value="Vehicle Insurance">Vehicle Insurance</option>
+                                <option value="Digital Marketing">Digital Marketing Strategy</option>
                                 <option value="General Quotation">Get Custom Quotation</option>
                             </select>
                         </div>
@@ -389,8 +379,9 @@
 
     </div>
 
+    <!-- NATIVE EXPERT JAVASCRIPT ANIMATIONS MATRIX -->
     <script>
-        // 1. Typewriter Effect
+        // 1. Dynamic Typewriter Effect Logic
         const words = ["Growth & Success", "Future Security", "Legal Compliance"];
         let wordIndex = 0;
         let charIndex = 0;
@@ -422,7 +413,25 @@
         }
         document.addEventListener("DOMContentLoaded", typeEffect);
 
-        // 2. Navigation Tracker Highlight
+        // 2. Interactive Vanilla JS 3D Card Tilting Matrix
+        const cards = document.querySelectorAll('.service-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top; 
+                const cardWidth = rect.width;
+                const cardHeight = rect.height;
+                const rotateX = ((y / cardHeight) - 0.5) * -12;
+                const rotateY = ((x / cardWidth) - 0.5) * 12;
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        // 3. Navigation Dynamic Scrolling Highlighter Tracker
         const sections = document.querySelectorAll('section, header');
         const navItems = document.querySelectorAll('.nav-item');
 
@@ -449,7 +458,7 @@
             }
         }
 
-        // 3. Formspree submission handler
+        // 4. Secure AJAX Lead Capture submission handler
         const form = document.getElementById("inquiryForm");
         const submitBtn = document.getElementById("submitBtn");
 
@@ -457,12 +466,12 @@
             e.preventDefault();
             
             if(form.action.includes("YOUR_FORM_ID_HERE")) {
-                alert("Developer Warning: Please update 'YOUR_FORM_ID_HERE' with your real Formspree ID!");
+                alert("Developer Warning: Please update 'YOUR_FORM_ID_HERE' with your real Formspree endpoint token!");
                 return;
             }
 
             submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            submitBtn.innerHTML = 'Sending Inquiry... <i class="fa-solid fa-spinner fa-spin"></i>';
             const data = new FormData(form);
             
             try {
@@ -473,13 +482,13 @@
                 });
 
                 if (response.ok) {
-                    alert("Thank you! Your inquiry has been sent safely. We will contact you soon.");
+                    alert("Thank you! Your corporate inquiry log has been transmitted safely. Our department manager will review your parameters and contact you shortly.");
                     form.reset();
                 } else {
-                    alert("Oops! There was a problem submitting your form.");
+                    alert("Oops! There was a synchronization problem submitting your data sheets.");
                 }
             } catch (error) {
-                alert("Network error!");
+                alert("Network connectivity issue discovered!");
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Submit Inquiry & Quote <i class="fa-solid fa-paper-plane"></i>';

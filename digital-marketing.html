@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing & Growth Services | RN Consultancy</title>
+    <!-- Font Awesome for sleek modern marketing icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for global corporate typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e293b; 
+            --bg-light: #f8fafc; 
+            --card-bg: rgba(255, 255, 255, 0.95); 
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Custom Marketing Theme Accents */
+            --color-marketing: #8b5cf6; /* Vibrant Purple for Growth */
+            --color-ads: #3b82f6;       /* Google Blue for Advertising */
+            --color-success: #10b981;   /* ROI Green */
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        html, body { width: 100%; min-height: 100%; background-color: var(--bg-light); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
+
+        .page-content-wrapper { position: relative; width: 100%; }
+
+        /* Dynamic Glow Blobs - Matching Main Layout Theme */
+        .service-bg-glow {
+            position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.13; z-index: -1; pointer-events: none;
+        }
+        .blob-marketing { width: 500px; height: 500px; background: var(--color-marketing); top: -60px; left: -100px; }
+        .blob-ads { width: 500px; height: 500px; background: var(--color-ads); top: 45%; right: -100px; }
+        .blob-success { width: 400px; height: 400px; background: var(--color-success); bottom: 12%; left: -60px; }
+
+        /* Navigation Header */
+        header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border-bottom: 1px solid #e2e8f0; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 25px; }
+        
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand-logo-icon { position: relative; width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), #0f172a); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(30, 41, 59, 0.1); overflow: hidden; }
+        .brand-logo-icon::before { content: ''; position: absolute; inset: 1px; background: #ffffff; border-radius: 11px; z-index: 1; }
+        .brand-logo-icon i { position: relative; z-index: 2; font-size: 20px; background: linear-gradient(135deg, var(--color-marketing), var(--color-ads)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .logo-title { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
+        .logo-title span { background: linear-gradient(135deg, var(--color-marketing), var(--color-ads)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .back-btn { text-decoration: none; color: var(--text-main); padding: 10px 24px; font-weight: 600; font-size: 14px; border-radius: 50px; background: #ffffff; border: 2px solid #e2e8f0; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .back-btn:hover { border-color: var(--color-marketing); color: var(--color-marketing); transform: translateY(-2px); }
+
+        /* Dynamic Hero Layout */
+        .hero-section { 
+            padding: 110px 25px 80px 25px; 
+            text-align: center; 
+            position: relative;
+            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.8), rgba(255, 255, 255, 0.98)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .badge { background: rgba(139, 92, 246, 0.08); color: var(--color-marketing); border: 1px solid rgba(139, 92, 246, 0.15); padding: 6px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 25px; }
+        .hero-section h1 { font-size: 52px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; color: var(--primary); letter-spacing: -1px; }
+        
+        /* Typewriter Animation Effect Hook */
+        .typewriter { 
+            background: linear-gradient(135deg, var(--color-marketing), var(--color-ads)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            font-weight: 800; 
+            border-right: 3px solid var(--color-marketing); 
+            padding-right: 5px; 
+            animation: blink 0.75s step-end infinite; 
+        }
+        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--color-marketing); } }
+        
+        .hero-section p { font-size: 18px; color: var(--text-main); max-width: 850px; margin: 0 auto 40px auto; font-weight: 500; }
+
+        /* Split-Grid Information Area */
+        .info-container { max-width: 1250px; margin: 0 auto; padding: 50px 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .info-text h2 { font-size: 38px; font-weight: 700; color: var(--primary); margin-bottom: 22px; line-height: 1.3; }
+        .info-text h2 span { color: var(--color-marketing); }
+        .info-text p { color: var(--text-muted); margin-bottom: 20px; font-size: 16px; }
+        
+        .info-image-wrapper { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 45px rgba(0,0,0,0.05); border: 4px solid #fff; transition: var(--transition); height: 400px; }
+        .info-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .info-image-wrapper:hover img { transform: scale(1.04); }
+
+        /* Marketing Services Matrix Grid */
+        .marketing-grid-section { padding: 80px 25px; max-width: 1300px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 40px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
+        .section-header h2 span { background: linear-gradient(135deg, var(--color-marketing), var(--color-ads)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-header p { color: var(--text-muted); font-size: 17px; }
+
+        .cards-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
+        .marketing-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.01); transition: var(--transition); position: relative; overflow: hidden; }
+        
+        .marketing-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--color-marketing), var(--color-ads)); transform: scaleX(0); transition: var(--transition); transform-origin: left; }
+        .marketing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(30,41,59,0.05); border-color: rgba(139, 92, 246, 0.2); }
+        .marketing-card:hover::before { transform: scaleX(1); }
+        
+        .card-icon { width: 62px; height: 62px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 25px; }
+        .icon-box-style { background: rgba(139, 92, 246, 0.07); color: var(--color-marketing); }
+        .icon-box-style-alt { background: rgba(59, 130, 246, 0.07); color: var(--color-ads); }
+        
+        .marketing-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 15px; color: var(--primary); }
+        .marketing-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
+        
+        .marketing-card ul { list-style: none; }
+        .marketing-card ul li { position: relative; padding-left: 25px; margin-bottom: 12px; color: var(--text-main); font-size: 14px; font-weight: 500; }
+        .marketing-card ul li i { position: absolute; left: 0; top: 4px; color: var(--color-success); font-size: 14px; }
+
+        /* Marketing Process Flow Chart System */
+        .process-section { background: #ffffff; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 80px 25px; }
+        .process-container { max-width: 1200px; margin: 0 auto; }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .process-item { background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: 20px; padding: 35px; text-align: left; transition: var(--transition); }
+        .process-item:hover { background: #ffffff; border-color: var(--color-marketing); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(139, 92, 246, 0.05); }
+        
+        .process-badge-icon { width: 55px; height: 55px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--color-marketing); box-shadow: 0 4px 10px rgba(0,0,0,0.02); margin-bottom: 20px; }
+        .process-item h4 { font-size: 19px; font-weight: 600; margin-bottom: 12px; color: var(--primary); }
+        .process-item p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+        /* High-Conversion CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.04) 0%, rgba(59, 130, 246, 0.04) 100%);
+            border: 2px solid rgba(139, 92, 246, 0.12);
+            padding: 65px 40px; border-radius: 32px; text-align: center; max-width: 1000px; margin: 70px auto 40px auto; backdrop-filter: blur(10px);
+        }
+        .cta-box h3 { font-size: 34px; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
+        .cta-box p { color: var(--text-muted); max-width: 650px; margin: 0 auto 32px auto; font-size: 16px; }
+        .cta-action-btn { text-decoration: none; background: linear-gradient(135deg, var(--color-marketing), var(--color-ads)); color: #fff; font-weight: 600; padding: 15px 45px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2); transition: var(--transition); border: none; cursor: pointer; font-size: 15px; }
+        .cta-action-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.35); }
+
+        footer { text-align: center; color: var(--text-muted); padding: 40px 25px; font-size: 14px; border-top: 1px solid #e2e8f0; margin-top: 40px; background: #ffffff; }
+
+        @media(max-width: 992px) {
+            .info-container { grid-template-columns: 1fr; gap: 40px; }
+            .info-image-wrapper { height: 320px; }
+        }
+        @media(max-width: 768px) {
+            .hero-section h1 { font-size: 34px; }
+            .section-header h2 { font-size: 30px; }
+            .cta-box { padding: 40px 20px; }
+            .cta-box h3 { font-size: 24px; }
+            .cta-action-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-content-wrapper">
+
+        <!-- BACKGROUND BLOB GRADIENTS -->
+        <div class="service-bg-glow blob-marketing"></div>
+        <div class="service-bg-glow blob-ads"></div>
+        <div class="service-bg-glow blob-success"></div>
+
+        <!-- Header Navigation Area -->
+        <header>
+            <div class="nav-container">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="brand-logo-icon">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="logo-title">RN <span>Marketing Labs</span></div>
+                </a>
+                <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </header>
+
+        <!-- Dynamic Hero Section Layout -->
+        <section class="hero-section">
+            <span class="badge">Data-Driven Growth Strategies</span>
+            <h1>Scale Your Digital Footprint <br><span class="typewriter" id="typewriter-text"></span></h1>
+            <p>Target hyper-relevant customers, launch high-conversion performance multi-channel marketing campaigns, and maximize your business ROI.</p>
+        </section>
+
+        <!-- Split-Screen Context Section -->
+        <section class="info-container">
+            <div class="info-text">
+                <h2>Why Targeted Performance Marketing <span>Matters?</span></h2>
+                <p>Simply launching a website or corporate business portal is no longer enough. Without custom-tailored audience intelligence and structured search visibility metrics, your business risks being buried under competitors.</p>
+                <p>At RN Consultancy, we structure clean marketing architectures to reverse-engineer local business constraints. We combine high-intent SEO architectures, dynamic social media curation, and algorithmic ad tracking networks to pipeline massive traffic channels straight to your service form templates.</p>
+            </div>
+            <div class="info-image-wrapper">
+                <!-- High-quality technology digital marketing visual -->
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop" alt="Digital Marketing Metrics Dashboard Analytics representation">
+            </div>
+        </section>
+
+        <!-- Marketing Services Matrix Grid -->
+        <section class="marketing-grid-section">
+            <div class="section-header">
+                <h2>Strategic <span>Growth Modules</span></h2>
+                <p>Explore performance-focused marketing models optimized to generate predictable revenue loops.</p>
+            </div>
+
+            <div class="cards-matrix">
+                <!-- Module 1 -->
+                <div class="marketing-card">
+                    <div class="card-icon icon-box-style">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h3>Search Engine Optimization</h3>
+                    <p>Rank high on relevant Google search phrases natively, driving sustainable organic discovery streams to your business page without ad costs.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-check"></i> Advanced keyword mapping & analysis</li>
+                        <li><i class="fa-solid fa-circle-check"></i> On-page metadata tuning</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Local SEO & Google Business optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="marketing-card">
+                    <div class="card-icon icon-box-style-alt">
+                        <i class="fa-solid fa-rectangle-ad"></i>
+                    </div>
+                    <h3>Paid Performance Ads</h3>
+                    <p>Deploy hyper-targeted advertising budgets across modern networks to pipeline buyers matching your specific financial profile models.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-check"></i> Google Search, Display & Video setup</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Meta (Facebook & Instagram) ads matrix</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Dynamic user retargeting funnel architecture</li>
+                    </ul>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="marketing-card">
+                    <div class="card-icon icon-box-style">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <h3>Social Media Curation</h3>
+                    <p>Optimize your social handles to structure community authority, engage potential local buyers, and solidify premium brand recall values.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-check"></i> Consistent branding asset calendars</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Content generation & visual planning</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Active customer interaction management</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Checklist System -->
+        <section class="process-section">
+            <div class="benefits-container">
+                <div class="section-header" style="margin-bottom: 20px;">
+                    <h2>Our Execution <span>Framework</span></h2>
+                    <p>How we move your business from abstract placement metrics to scalable market acquisition logs.</p>
+                </div>
+                
+                <div class="process-grid">
+                    <!-- Step 1 -->
+                    <div class="process-item">
+                        <div class="process-badge-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h4>1. Competitor Audits</h4>
+                        <p>We trace your competitors' core ad configurations, keyword capture models, and traffic sources to design a superior marketing strategy blueprints template.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-item">
+                        <div class="process-badge-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <h4>2. Funnel Construction</h4>
+                        <p>We build optimized high-intent landing page configurations with clean contact buttons and custom form selectors to eliminate visitor drop-offs.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-item">
+                        <div class="process-badge-icon"><i class="fa-solid fa-sliders"></i></div>
+                        <h4>3. Campaign Launch</h4>
+                        <p>We launch structured ad parameters using accurate demographic criteria like geography, interest, and professional industry sectors.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-item">
+                        <div class="process-badge-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
+                        <h4>4. Continuous Optimization</h4>
+                        <p>Our analytics team performs weekly optimization reviews on campaign data to lower your cost-per-lead and boost overall conversions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Conversion Call To Action -->
+        <section class="process-container">
+            <div class="cta-box">
+                <h3>Tired of Burning Budgets on Generic Ad Agencies?</h3>
+                <p>Let RN Consultancy launch an optimized performance marketing strategy tailored to bring high-value inquiries straight to your dashboard.</p>
+                <a href="index.html#contact" class="cta-action-btn">Kickstart Your Digital Growth <i class="fa-solid fa-rocket"></i></a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 RN Consultancy | Digital Marketing Division. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- TYPEWRITER ENGINE SCRIPT INTEGRATION -->
+    <script>
+        const words = ["Generate High-Intent Business Leads", "Launch High-ROI Meta & Google Ads", "Dominate Local Search Engine Rankings"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const targetElement = document.getElementById("typewriter-text");
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                targetElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                targetElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = 1900; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 400; 
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+        
+        document.addEventListener("DOMContentLoaded", typeEffect);
+    </script>
+</body>
+</html>
