@@ -4,318 +4,631 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Insurance Advisor Services | RN Consultancy</title>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2 family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #1e293b; 
-            --bg-light: #f8fafc; 
-            --card-bg: rgba(255, 255, 255, 0.95); 
-            --text-main: #334155;
-            --text-muted: #64748b;
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary-dark: #0b1329;       /* Deep Official Corporate Navy */
+            --primary-slate: #1e293b;      /* Elegant Slate */
+            --accent: #2563eb;             /* Royal Corporate Blue */
+            --accent-glow: #3b82f6;
+            --accent-hover: #1d4ed8;
             
-            /* Custom Health Insurance Theme Accents */
-            --color-health: #10b981;   /* Vibrant Care Green */
-            --color-protect: #06b6d4;  /* Secure Cyan/Blue */
-            --color-danger: #ef4444;   /* Alert Red */
+            --bg-main: #f1f5f9;
+            --surface-white: #ffffff;
+            --card-border: #e2e8f0;
+            
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --shadow-soft: 0 10px 30px -5px rgba(11, 19, 41, 0.05);
+            --shadow-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.18);
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        
-        html, body { width: 100%; min-height: 100%; background-color: var(--bg-light); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
 
-        .page-content-wrapper { position: relative; width: 100%; }
-
-        /* Multi-Colored Glow Blobs - Matching Main Index Layout Theme */
-        .service-bg-glow {
-            position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.12; z-index: -1; pointer-events: none;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            overflow-x: hidden;
         }
-        .blob-health { width: 500px; height: 500px; background: var(--color-health); top: -60px; left: -100px; }
-        .blob-protect { width: 500px; height: 500px; background: var(--color-protect); top: 45%; right: -100px; }
-        .blob-danger { width: 400px; height: 400px; background: var(--color-danger); bottom: 15%; left: -60px; }
 
-        /* Navigation Header */
-        header { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.02); border-bottom: 1px solid #e2e8f0; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1300px; margin: 0 auto; padding: 12px 25px; }
+        /* Official Mesh Gradient Background */
+        .page-bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 60%, rgba(15, 23, 42, 0.06) 0%, transparent 45%),
+                linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        /* Header Navigation */
+        header { 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8); 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1240px; 
+            margin: 0 auto; 
+            padding: 16px 24px; 
+        }
         
         .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .brand-logo-icon { position: relative; width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), #0f172a); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(30, 41, 59, 0.1); overflow: hidden; }
-        .brand-logo-icon::before { content: ''; position: absolute; inset: 1px; background: #ffffff; border-radius: 11px; z-index: 1; }
-        .brand-logo-icon i { position: relative; z-index: 2; font-size: 20px; background: linear-gradient(135deg, var(--color-health), var(--color-protect)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .logo-title { font-size: 24px; font-weight: 800; color: var(--primary); letter-spacing: -0.5px; }
-        .logo-title span { background: linear-gradient(135deg, var(--color-health), var(--color-protect)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .back-btn { text-decoration: none; color: var(--text-main); padding: 10px 24px; font-weight: 600; font-size: 14px; border-radius: 50px; background: #ffffff; border: 2px solid #e2e8f0; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-        .back-btn:hover { border-color: var(--color-health); color: var(--color-health); transform: translateY(-2px); }
-
-        /* Dynamic Hero Layout */
-        .hero-section { 
-            padding: 110px 25px 80px 25px; 
-            text-align: center; 
-            position: relative;
-            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.8), rgba(255, 255, 255, 0.98)), url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+        .brand-logo-icon { 
+            width: 44px; 
+            height: 44px; 
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent)); 
+            border-radius: 10px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #ffffff;
+            font-size: 20px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: var(--transition);
         }
-        .badge { background: rgba(16, 185, 129, 0.08); color: var(--color-health); border: 1px solid rgba(16, 185, 129, 0.15); padding: 6px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 25px; }
-        .hero-section h1 { font-size: 52px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; color: var(--primary); letter-spacing: -1px; }
+        .logo-wrapper:hover .brand-logo-icon { transform: rotate(-5deg) scale(1.05); }
+
+        .logo-title { font-size: 22px; font-weight: 800; color: var(--primary-dark); letter-spacing: -0.5px; }
+        .logo-title span { color: var(--accent); }
+        .logo-subtitle { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
+
+        .back-btn { 
+            text-decoration: none; 
+            color: var(--primary-dark); 
+            padding: 10px 22px; 
+            font-weight: 700; 
+            font-size: 14px; 
+            border-radius: 50px; 
+            background: #ffffff; 
+            border: 1px solid var(--card-border); 
+            transition: var(--transition); 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            box-shadow: var(--shadow-soft);
+        }
+        .back-btn:hover { 
+            border-color: var(--accent); 
+            color: var(--accent); 
+            transform: translateY(-2px); 
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Hero Section */
+        .hero { 
+            padding: 90px 24px 70px; 
+            max-width: 1240px;
+            margin: 0 auto;
+            text-align: center;
+            animation: textFadeUp 0.8s ease-out forwards;
+        }
         
-        /* Typewriter Animation Effect Hook */
-        .typewriter { 
-            background: linear-gradient(135deg, var(--color-health), var(--color-protect)); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: #ffffff;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
+            background-size: 200% auto;
+            animation: shinyBadge 3s linear infinite;
+        }
+        .hero-badge i { animation: pulseGlow 2s infinite; }
+
+        .hero h1 { 
+            font-size: 50px; 
             font-weight: 800; 
-            border-right: 3px solid var(--color-health); 
-            padding-right: 5px; 
-            animation: blink 0.75s step-end infinite; 
+            line-height: 1.25; 
+            margin-bottom: 20px; 
+            color: var(--primary-dark); 
+            letter-spacing: -1.5px; 
         }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--color-health); } }
-        
-        .hero-section p { font-size: 18px; color: var(--text-main); max-width: 850px; margin: 0 auto 40px auto; font-weight: 500; }
 
-        /* Split-Grid Context Area with Medical Image */
-        .info-container { max-width: 1250px; margin: 0 auto; padding: 50px 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .info-text h2 { font-size: 38px; font-weight: 700; color: var(--primary); margin-bottom: 22px; line-height: 1.3; }
-        .info-text h2 span { color: var(--color-health); }
-        .info-text p { color: var(--text-muted); margin-bottom: 20px; font-size: 16px; }
+        /* Dynamic Typewriter Text */
+        .typewriter-text {
+            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-right: 3px solid var(--accent);
+            padding-right: 5px;
+            animation: blinkCursor 0.75s infinite;
+        }
+
+        .hero p { 
+            font-size: 18px; 
+            color: var(--text-muted); 
+            margin-bottom: 36px; 
+            max-width: 750px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            font-weight: 500; 
+            animation: textFadeUp 1s ease-out forwards;
+        }
+
+        /* Split Info Container */
+        .info-container { 
+            max-width: 1240px; 
+            margin: 0 auto 80px; 
+            padding: 0 24px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 50px; 
+            align-items: center; 
+        }
+        .info-text h2 { 
+            font-size: 36px; 
+            font-weight: 800; 
+            color: var(--primary-dark); 
+            margin-bottom: 20px; 
+            line-height: 1.25; 
+            letter-spacing: -0.5px;
+        }
+        .info-text h2 span { color: var(--accent); }
+        .info-text p { color: var(--text-muted); margin-bottom: 18px; font-size: 15.5px; line-height: 1.7; }
         
-        .info-image-wrapper { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 45px rgba(0,0,0,0.05); border: 4px solid #fff; transition: var(--transition); height: 400px; }
+        .info-image-wrapper { 
+            position: relative; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow-hover); 
+            border: 1px solid var(--card-border); 
+            height: 380px; 
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+        }
         .info-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-        .info-image-wrapper:hover img { transform: scale(1.04); }
+        .info-image-wrapper:hover img { transform: scale(1.06); }
 
-        /* Insurance Products Matrix Grid */
-        .insurance-grid-section { padding: 80px 25px; max-width: 1300px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 40px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
-        .section-header h2 span { background: linear-gradient(135deg, var(--color-health), var(--color-protect)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .section-header p { color: var(--text-muted); font-size: 17px; }
+        /* Services Grid Section */
+        .services-section { padding: 40px 24px 100px; max-width: 1240px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 60px; animation: textFadeUp 0.8s ease-out; }
+        .section-title h2 { font-size: 36px; font-weight: 800; color: var(--primary-dark); margin-bottom: 10px; letter-spacing: -0.5px; }
+        .section-title p { font-size: 16px; color: var(--text-muted); font-weight: 500; }
 
-        .cards-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
-        .insurance-card { background: #ffffff; border: 1px solid #e2e8f0; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.01); transition: var(--transition); position: relative; overflow: hidden; }
-        
-        .insurance-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--color-health), var(--color-protect)); transform: scaleX(0); transition: var(--transition); transform-origin: left; }
-        .insurance-card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(30,41,59,0.05); border-color: rgba(16, 185, 129, 0.2); }
-        .insurance-card:hover::before { transform: scaleX(1); }
-        
-        .card-icon { width: 62px; height: 62px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 25px; }
-        .icon-box-style { background: rgba(16, 185, 129, 0.07); color: var(--color-health); }
-        .icon-box-style-alt { background: rgba(6, 182, 212, 0.07); color: var(--color-protect); }
-        
-        .insurance-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 15px; color: var(--primary); }
-        .insurance-card p { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
-        
-        .insurance-card ul { list-style: none; }
-        .insurance-card ul li { position: relative; padding-left: 25px; margin-bottom: 12px; color: var(--text-main); font-size: 14px; font-weight: 500; }
-        .insurance-card ul li i { position: absolute; left: 0; top: 4px; color: var(--color-health); font-size: 14px; }
-
-        /* Elaborated Policy Benefits Grid System */
-        .benefits-section { background: #ffffff; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; padding: 80px 25px; }
-        .benefits-container { max-width: 1200px; margin: 0 auto; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
-        .benefit-item { background: var(--bg-light); border: 1px solid #e2e8f0; border-radius: 20px; padding: 35px; text-align: left; transition: var(--transition); }
-        .benefit-item:hover { background: #ffffff; border-color: var(--color-health); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(16,185,129,0.05); }
-        
-        .benefit-badge-icon { width: 55px; height: 55px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--color-health); box-shadow: 0 4px 10px rgba(0,0,0,0.02); margin-bottom: 20px; }
-        .benefit-item h4 { font-size: 19px; font-weight: 600; margin-bottom: 12px; color: var(--primary); }
-        .benefit-item p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-
-        /* High-Conversion CTA Box */
-        .cta-box {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.04) 0%, rgba(6, 182, 212, 0.04) 100%);
-            border: 2px solid rgba(16, 185, 129, 0.12);
-            padding: 65px 40px; border-radius: 32px; text-align: center; max-width: 1000px; margin: 70px auto 40px auto; backdrop-filter: blur(10px);
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 28px; 
         }
-        .cta-box h3 { font-size: 34px; font-weight: 700; margin-bottom: 15px; color: var(--primary); }
-        .cta-box p { color: var(--text-muted); max-width: 650px; margin: 0 auto 32px auto; font-size: 16px; }
-        .cta-action-btn { text-decoration: none; background: linear-gradient(135deg, var(--color-health), var(--color-protect)); color: #fff; font-weight: 600; padding: 15px 45px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2); transition: var(--transition); border: none; cursor: pointer; font-size: 15px; }
-        .cta-action-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.35); }
 
-        footer { text-align: center; color: var(--text-muted); padding: 40px 25px; font-size: 14px; border-top: 1px solid #e2e8f0; margin-top: 40px; background: #ffffff; }
+        .service-card { 
+            background: var(--surface-white); 
+            border: 1px solid var(--card-border); 
+            border-radius: 16px; 
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow-soft);
+            animation: textFadeUp 0.8s ease-out;
+        }
+        
+        .service-card:hover { 
+            transform: translateY(-8px); 
+            border-color: rgba(37, 99, 235, 0.4);
+            box-shadow: var(--shadow-hover);
+        }
 
-        @media(max-width: 992px) {
+        .card-image-box {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-out;
+        }
+        .service-card:hover .card-image-box img {
+            transform: scale(1.08);
+        }
+
+        /* Backup Fallback Icon if Image doesn't load */
+        .card-image-fallback {
+            font-size: 48px;
+            color: rgba(255, 255, 255, 0.15);
+            position: absolute;
+        }
+
+        .icon-badge {
+            position: absolute;
+            bottom: -20px;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary-dark);
+            color: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(11, 19, 41, 0.3);
+            border: 2px solid #ffffff;
+            transition: var(--transition);
+            z-index: 2;
+        }
+        .service-card:hover .icon-badge {
+            background: var(--accent);
+            transform: rotate(-5deg);
+        }
+
+        .card-body {
+            padding: 32px 24px 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .service-card h3 { font-size: 20px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 700; transition: var(--transition); }
+        .service-card:hover h3 { color: var(--accent); }
+
+        .service-card p { font-size: 14.5px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.6; }
+
+        .service-checklist { list-style: none; margin-bottom: 10px; }
+        .service-checklist li { position: relative; padding-left: 22px; margin-bottom: 10px; color: var(--primary-dark); font-size: 13.5px; font-weight: 600; }
+        .service-checklist li i { position: absolute; left: 0; top: 3px; color: #10b981; font-size: 14px; }
+
+        /* Strategic Advantages Framework */
+        .process-section { 
+            background: #ffffff; 
+            border-top: 1px solid var(--card-border); 
+            border-bottom: 1px solid var(--card-border); 
+            padding: 90px 24px; 
+        }
+        .process-container { max-width: 1240px; margin: 0 auto; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 50px; }
+        
+        .process-item { 
+            background: var(--bg-main); 
+            border: 1px solid var(--card-border); 
+            border-radius: 16px; 
+            padding: 32px 24px; 
+            text-align: left; 
+            transition: var(--transition); 
+        }
+        .process-item:hover { 
+            background: #ffffff; 
+            border-color: var(--accent); 
+            transform: translateY(-6px); 
+            box-shadow: var(--shadow-hover); 
+        }
+        
+        .process-badge-icon { 
+            width: 52px; 
+            height: 52px; 
+            background: #ffffff; 
+            border: 1px solid var(--card-border); 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 20px; 
+            color: var(--accent); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03); 
+            margin-bottom: 20px; 
+            transition: var(--transition);
+        }
+        .process-item:hover .process-badge-icon {
+            background: var(--accent);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .process-item h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--primary-dark); }
+        .process-item p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+
+        /* High Conversion CTA Section */
+        .cta-section { padding: 80px 24px; max-width: 1240px; margin: 0 auto; }
+        .cta-card-container { 
+            background: #ffffff; 
+            padding: 56px 40px; 
+            border-radius: 28px; 
+            border: 1px solid rgba(37, 99, 235, 0.15); 
+            box-shadow: 0 25px 50px -12px rgba(11, 19, 41, 0.12);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .cta-card-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-dark), var(--accent), var(--accent-glow));
+        }
+
+        .cta-card-container h3 { font-size: 32px; font-weight: 800; color: var(--primary-dark); margin-bottom: 14px; letter-spacing: -0.5px; }
+        .cta-card-container p { font-size: 16px; color: var(--text-muted); max-width: 650px; margin: 0 auto 32px; font-weight: 500; }
+
+        .btn-cta-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+            color: #ffffff;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+        .btn-cta-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.5);
+            background: linear-gradient(135deg, var(--accent), var(--primary-dark));
+        }
+
+        footer { 
+            background: var(--primary-dark); 
+            color: #94a3b8; 
+            text-align: center; 
+            padding: 36px 24px; 
+            font-size: 14px; 
+        }
+
+        /* TEXT ANIMATION KEYFRAMES */
+        @keyframes textFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blinkCursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--accent); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        @keyframes shinyBadge {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
             .info-container { grid-template-columns: 1fr; gap: 40px; }
             .info-image-wrapper { height: 320px; }
         }
-        @media(max-width: 768px) {
-            .hero-section h1 { font-size: 34px; }
-            .section-header h2 { font-size: 30px; }
-            .cta-box { padding: 40px 20px; }
-            .cta-box h3 { font-size: 24px; }
-            .cta-action-btn { width: 100%; justify-content: center; }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 34px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .cta-card-container { padding: 36px 20px; }
+            .cta-card-container h3 { font-size: 24px; }
+            .btn-cta-action { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="page-content-wrapper">
+    <div class="page-bg-mesh"></div>
 
-        <div class="service-bg-glow blob-health"></div>
-        <div class="service-bg-glow blob-protect"></div>
-        <div class="service-bg-glow blob-danger"></div>
-
-        <header>
-            <div class="nav-container">
-                <a href="index.html" class="logo-wrapper">
-                    <div class="brand-logo-icon">
-                        <i class="fa-solid fa-heart-pulse"></i>
-                    </div>
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <div class="brand-logo-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div>
                     <div class="logo-title">RN <span>Health Advisory</span></div>
-                </a>
-                <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
-            </div>
-        </header>
+                    <div class="logo-subtitle">Insurance Advisory Division</div>
+                </div>
+            </a>
+            
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Main Site</a>
+        </div>
+    </header>
 
-        <section class="hero-section">
-            <span class="badge">IRDAI Aligned Insurance Advisory</span>
-            <h1>Shield Your Family & Wealth <br><span class="typewriter" id="typewriter-text"></span></h1>
-            <p>Get data-driven, optimal health insurance consultations tailored to secure your medical emergencies without liquidating your lifelong investments.</p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fa-solid fa-shield-halved"></i> IRDAI Aligned Insurance Advisory
+        </div>
+        <h1>Shield Your Family & Wealth <br><span class="typewriter-text" id="typewriterTarget"></span></h1>
+        <p>Get data-driven, optimal health insurance consultations tailored to secure your medical emergencies without liquidating your lifelong investments.</p>
+    </section>
 
-        <section class="info-container">
-            <div class="info-text">
-                <h2>Why Expert Health Insurance Consultation <span>Matters?</span></h2>
-                <p>Medical inflation is rising aggressively year over year. A single unplanned critical hospitalization can wipe out entire domestic savings if your insurance portfolio lacks optimal policy parameters.</p>
-                <p>At RN Consultancy, we don't just sell general plans. We comprehensively map your household demographic metrics, audit pre-existing medical risks, decode hidden corporate room-rent sublimits, and design an impenetrable security structure for your healthcare logistics.</p>
-            </div>
-            <div class="info-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop" alt="Doctor providing healthcare consulting support">
-            </div>
-        </section>
+    <!-- Split-Screen Info Section -->
+    <section class="info-container">
+        <div class="info-text">
+            <h2>Why Expert Health Insurance Consultation <span>Matters?</span></h2>
+            <p>Medical inflation is rising aggressively year over year. A single unplanned critical hospitalization can wipe out entire domestic savings if your insurance portfolio lacks optimal policy parameters.</p>
+            <p>At RN Consultancy, we don't just sell general plans. We comprehensively map your household demographic metrics, audit pre-existing medical risks, decode hidden room-rent sublimits, and design an impenetrable security structure for your healthcare logistics.</p>
+        </div>
+        <div class="info-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop" alt="Doctor providing healthcare consulting support">
+        </div>
+    </section>
 
-        <section class="insurance-grid-section">
-            <div class="section-header">
-                <h2>Customized <span>Insurance Portfolio Products</span></h2>
-                <p>Explore comprehensive protection covers structured for every stage of your life.</p>
-            </div>
-
-            <div class="cards-matrix">
-                <div class="insurance-card">
-                    <div class="card-icon icon-box-style">
-                        <i class="fa-solid fa-user-group"></i>
-                    </div>
+    <!-- Services Grid Section -->
+    <section class="services-section">
+        <div class="section-title">
+            <h2>Customized Insurance Portfolio Products</h2>
+            <p>Explore comprehensive protection covers structured for every stage of your life.</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Module 1: Family Floater Plans -->
+            <div class="service-card">
+                <div class="card-image-box">
+                    <i class="fa-solid fa-user-group card-image-fallback"></i>
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop" alt="Family Health Protection">
+                    <div class="icon-badge"><i class="fa-solid fa-user-group"></i></div>
+                </div>
+                <div class="card-body">
                     <h3>Family Floater Plans</h3>
-                    <p>A single automated umbrella cover architecture providing equal centralized high sum-insured claim privileges to all dependents inside your house.</p>
-                    <ul>
+                    <p>A single centralized high sum-insured umbrella cover architecture providing equal claim privileges to all dependents inside your household.</p>
+                    <ul class="service-checklist">
                         <li><i class="fa-solid fa-circle-check"></i> Single consolidated premium structure</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Automated restoration on exhaustion</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Covers spouse, children, and parents</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Automated sum insured restoration on exhaustion</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Covers self, spouse, children, and dependent parents</li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="insurance-card">
-                    <div class="card-icon icon-box-style-alt">
-                        <i class="fa-solid fa-shield-virus"></i>
-                    </div>
+            <!-- Module 2: Critical Illness Super Covers -->
+            <div class="service-card">
+                <div class="card-image-box">
+                    <i class="fa-solid fa-shield-virus card-image-fallback"></i>
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop" alt="Critical Illness Coverage">
+                    <div class="icon-badge"><i class="fa-solid fa-shield-virus"></i></div>
+                </div>
+                <div class="card-body">
                     <h3>Critical Illness Super Covers</h3>
                     <p>High-end survival payout structures engineered to execute instant lump-sum monetary support upon detection of major life-threatening conditions.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Payout independent of hospital bills</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Shields income during long recoveries</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Covers stroke, tumors, and cardiac events</li>
+                    <ul class="service-checklist">
+                        <li><i class="fa-solid fa-circle-check"></i> Instant payout independent of hospital bills</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Shields family income during long treatment recoveries</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Covers stroke, tumors, and major cardiac events</li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="insurance-card">
-                    <div class="card-icon icon-box-style">
-                        <i class="fa-solid fa-wheelchair"></i>
-                    </div>
-                    <h3>Senior Citizen Special Protection</h3>
+            <!-- Module 3: Senior Citizen Protection (VERIFIED WORKING SENIOR HEALTHCARE IMAGE) -->
+            <div class="service-card">
+                <div class="card-image-box">
+                    <i class="fa-solid fa-wheelchair card-image-fallback"></i>
+                    <img src="https://images.unsplash.com/photo-1581579438747-1dc8d1e2724a?q=80&w=600&auto=format&fit=crop" alt="Senior Citizen Healthcare Protection">
+                    <div class="icon-badge"><i class="fa-solid fa-wheelchair"></i></div>
+                </div>
+                <div class="card-body">
+                    <h3>Senior Citizen Protection</h3>
                     <p>Meticulously calculated medical structures custom-built for elderly members to secure comprehensive advanced old-age clinical procedures.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Relaxed pre-policy waiting frameworks</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Massive network of localized hospitals</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Includes advanced day-care processes</li>
+                    <ul class="service-checklist">
+                        <li><i class="fa-solid fa-circle-check"></i> Relaxed pre-policy waiting period frameworks</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Massive network of localized multi-specialty hospitals</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Includes advanced day-care and AYUSH procedures</li>
                     </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="benefits-section">
-            <div class="benefits-container">
-                <div class="section-header" style="margin-bottom: 20px;">
-                    <h2>Elaborated <span>Strategic Benefits</span></h2>
-                    <p>Crucial policy dynamics decoded comprehensively by our advisory division.</p>
+    <!-- Strategic Advantages Framework -->
+    <section class="process-section">
+        <div class="process-container">
+            <div class="section-title">
+                <h2>Elaborated Strategic Benefits</h2>
+                <p>Crucial policy dynamics decoded comprehensively by our advisory division.</p>
+            </div>
+            
+            <div class="process-grid">
+                <!-- Benefit 1 -->
+                <div class="process-item">
+                    <div class="process-badge-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                    <h4>1. Cashless Hospitalization</h4>
+                    <p>Walk paperless into thousands of network hospitals. Our advisors ensure hassle-free instant authorization so your focus stays on treatment.</p>
                 </div>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="benefit-badge-icon"><i class="fa-solid fa-truck-medical"></i></div>
-                        <h4>Cashless Hospitalization</h4>
-                        <p>Walk completely paperless into thousands of multi-specialty medical grid networks. Our advisors ensure hassle-free instant authorization so your focus stays on treatment, not paperwork.</p>
-                    </div>
 
-                    <div class="benefit-item">
-                        <div class="benefit-badge-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
-                        <h4>Instant Unlimited Restoration</h4>
-                        <p>If multiple family members require hospitalization in the same financial year, our automated restoration matrices replenish 100% of the sum insured instantly at zero cost overheads.</p>
-                    </div>
+                <!-- Benefit 2 -->
+                <div class="process-item">
+                    <div class="process-badge-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <h4>2. Unlimited Restoration</h4>
+                    <p>If multiple family members require hospitalization in the same year, automated restoration replenishes 100% of the sum insured instantly.</p>
+                </div>
 
-                    <div class="benefit-item">
-                        <div class="benefit-badge-icon"><i class="fa-solid fa-percent"></i></div>
-                        <h4>No-Claim Bonus Multipliers</h4>
-                        <p>Enjoy optimal compounding rewards for maintaining excellent fitness. Earn up to 50% to 100% expansion of your policy cover volume for every risk-free year without premium inflation.</p>
-                    </div>
+                <!-- Benefit 3 -->
+                <div class="process-item">
+                    <div class="process-badge-icon"><i class="fa-solid fa-percent"></i></div>
+                    <h4>3. NCB Multipliers</h4>
+                    <p>Earn compounding rewards for claim-free years. Enjoy 50% to 100% expansion of your policy sum insured without premium inflation.</p>
+                </div>
 
-                    <div class="benefit-item">
-                        <div class="benefit-badge-icon"><i class="fa-solid fa-coins"></i></div>
-                        <h4>Tax Rebate Optimization</h4>
-                        <p>Secure massive financial tax relief optimizations annually under Section 80D of the Income Tax framework, protecting up to ₹25,000 for self and up to ₹50,000 for senior dependent parents.</p>
-                    </div>
+                <!-- Benefit 4 -->
+                <div class="process-item">
+                    <div class="process-badge-icon"><i class="fa-solid fa-coins"></i></div>
+                    <h4>4. Section 80D Tax Rebate</h4>
+                    <p>Secure tax savings annually under Section 80D, protecting up to ₹25,000 for self/family and up to ₹50,000 for senior dependent parents.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="process-container">
-            <div class="cta-box">
-                <h3>Confused Between Complex Insurance Portals?</h3>
-                <p>Don't select a generic policy blindly. Let RN Consultancy run a professional algorithmic risk calculation to guide you to the perfect health insurance infrastructure.</p>
-                <a href="index.html#contact" class="cta-action-btn">Book Free Consultation <i class="fa-solid fa-user-doctor"></i></a>
-            </div>
-        </section>
+    <!-- High Conversion Call To Action -->
+    <section class="cta-section">
+        <div class="cta-card-container">
+            <h3>Confused Between Complex Insurance Portals?</h3>
+            <p>Don't select a generic policy blindly. Let RN Consultancy run an algorithmic risk calculation to guide you to the perfect health insurance infrastructure.</p>
+            <a href="index.html#contact" class="btn-cta-action">
+                Book Free Consultation <i class="fa-solid fa-user-doctor"></i>
+            </a>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2026 RN Consultancy | Insurance Advisory Division. All Security Rights Reserved.</p>
-        </footer>
-
-    </div>
+    <footer>
+        <p>&copy; 2026 RN Consultancy | Insurance Advisory Division. All Security Rights Reserved.</p>
+        <p style="margin-top: 4px; font-size: 12px; opacity: 0.8;">Designed & Developed by Hitesh Kolhe (RN Consultancy)</p>
+    </footer>
 
     <script>
-        const words = ["Cashless Network Authorization", "100% Automated Policy Restoration", "Tax Relief Under Section 80D"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const targetElement = document.getElementById("typewriter-text");
+        // TYPEWRITER ANIMATION LOGIC
+        const animatedWords = ["Cashless Network Authorization", "100% Automated Policy Restoration", "Tax Relief Under Section 80D"];
+        let wordIdx = 0, charIdx = 0, isDeletingWord = false;
+        const targetElement = document.getElementById("typewriterTarget");
 
-        function typeEffect() {
-            const currentWord = words[wordIndex];
-            if (isDeleting) {
-                targetElement.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
+        function typeLoop() {
+            const currentWord = animatedWords[wordIdx];
+            if (isDeletingWord) {
+                targetElement.textContent = currentWord.substring(0, charIdx - 1);
+                charIdx--;
             } else {
-                targetElement.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
+                targetElement.textContent = currentWord.substring(0, charIdx + 1);
+                charIdx++;
             }
 
-            let typeSpeed = isDeleting ? 40 : 80;
+            let typeSpeed = isDeletingWord ? 40 : 80;
 
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 1900; 
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
+            if (!isDeletingWord && charIdx === currentWord.length) {
+                typeSpeed = 1800; 
+                isDeletingWord = true;
+            } else if (isDeletingWord && charIdx === 0) {
+                isDeletingWord = false;
+                wordIdx = (wordIdx + 1) % animatedWords.length;
                 typeSpeed = 400; 
             }
 
-            setTimeout(typeEffect, typeSpeed);
+            setTimeout(typeLoop, typeSpeed);
         }
-        
-        document.addEventListener("DOMContentLoaded", typeEffect);
+        document.addEventListener("DOMContentLoaded", typeLoop);
     </script>
 </body>
 </html>
