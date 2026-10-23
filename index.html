@@ -7,9 +7,327 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* ==========================================
+           3D LUXURY WHITE OFFICE ENTRANCE OVERLAY CSS
+           ========================================== */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
+            background: radial-gradient(circle at 50% 35%, #ffffff 0%, #eef2f6 55%, #dbe3eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+            overflow: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .intro-building-stage {
+            position: relative;
+            width: min(840px, 95vw);
+            height: min(600px, 86vh);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+        }
+
+        /* Modern White Architectural Building Wall */
+        .intro-facade {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #edf2f7 100%);
+            border-radius: 18px;
+            border: 1px solid rgba(203, 213, 225, 0.9);
+            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18), 0 4px 12px rgba(0, 0, 0, 0.05), inset 0 2px 0 #ffffff;
+            overflow: hidden;
+        }
+
+        /* Architectural Fluted / Slatted Wall Texture on Sides */
+        .intro-facade::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(90deg, #f1f5f9 0px, #f1f5f9 22px, #e2e8f0 23px, #e2e8f0 24px);
+            opacity: 0.85;
+        }
+
+        /* Architectural Wall Trim & Top Cornice */
+        .intro-cornice {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 18px;
+            background: linear-gradient(180deg, #ffffff, #e2e8f0);
+            border-bottom: 2px solid #d4af37;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            z-index: 6;
+        }
+
+        /* Architectural White Pillars */
+        .intro-pillar {
+            position: absolute;
+            top: 18px;
+            bottom: 0;
+            width: 26px;
+            background: linear-gradient(90deg, #f8fafc, #ffffff 40%, #cbd5e1);
+            border-left: 1px solid #e2e8f0;
+            border-right: 1px solid #94a3b8;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.08);
+            z-index: 5;
+        }
+        .intro-pillar.left { left: 42px; }
+        .intro-pillar.right { right: 42px; }
+
+        /* Modern Wall Sconce Lights (Warm Up & Down Glow) */
+        .intro-sconce {
+            position: absolute;
+            top: 140px;
+            width: 14px;
+            height: 38px;
+            background: linear-gradient(180deg, #fff3c4, #d4af37, #997316);
+            border-radius: 4px;
+            box-shadow: 0 0 16px rgba(212, 175, 55, 0.6);
+            z-index: 7;
+        }
+        .intro-sconce.left { left: 88px; }
+        .intro-sconce.right { right: 88px; }
+        .intro-sconce::before, .intro-sconce::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 70px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .intro-sconce::before {
+            top: -65px;
+            background: radial-gradient(ellipse at bottom, rgba(254, 240, 138, 0.45) 0%, transparent 70%);
+        }
+        .intro-sconce::after {
+            bottom: -65px;
+            background: radial-gradient(ellipse at top, rgba(254, 240, 138, 0.4) 0%, transparent 70%);
+        }
+
+        /* Luxury White & Gold Signboard */
+        .intro-signboard {
+            position: absolute;
+            top: 36px;
+            width: min(540px, 86%);
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12), 0 0 20px rgba(212, 175, 55, 0.25), inset 0 1px 0 #ffffff;
+            z-index: 12;
+            transform: translateZ(25px);
+        }
+
+        .intro-signboard-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(20px, 4.2vw, 30px);
+            font-weight: 800;
+            color: #0b1329;
+            letter-spacing: 3px;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(212, 175, 55, 0.3);
+        }
+
+        .intro-signboard-sub {
+            font-size: clamp(9px, 1.8vw, 11px);
+            color: #d4af37;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        /* Doorway Frame & Portal (Surrounded by white wall) */
+        .intro-doors-wrapper {
+            position: relative;
+            width: min(390px, 76%);
+            height: min(425px, 69%);
+            background: #020305;
+            perspective: 1100px;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            border: 3px solid #d4af37;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 0 0 25px rgba(212, 175, 55, 0.2);
+            z-index: 10;
+            margin-bottom: 0;
+        }
+
+        /* Deep Obsidian Black Doors */
+        .intro-door {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background: linear-gradient(145deg, #1e222b 0%, #0d0f14 55%, #050608 100%);
+            transform-style: preserve-3d;
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        /* Glossy Dark Glass Reflection */
+        .intro-door::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.03) 38%, transparent 65%);
+            pointer-events: none;
+        }
+
+        #intro-door-left {
+            left: 0;
+            transform-origin: left center;
+            border-right: 1.5px solid #d4af37;
+        }
+
+        #intro-door-right {
+            right: 0;
+            transform-origin: right center;
+            border-left: 1.5px solid #d4af37;
+        }
+
+        .intro-doors-wrapper:hover .intro-door {
+            box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.35);
+        }
+
+        /* Sleek Vertical Luxury Gold Handles */
+        .intro-handle {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 96px;
+            background: linear-gradient(180deg, #fff3c4, #d4af37, #855e0f);
+            border-radius: 4px;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.5), 1px 2px 8px rgba(0, 0, 0, 0.9);
+        }
+
+        #intro-door-left .intro-handle { right: 14px; }
+        #intro-door-right .intro-handle { left: 14px; }
+
+        /* LUXURY FLOWER POTS (PLANTERS WITH LUSH BOTANICALS) */
+        .intro-planter {
+            position: absolute;
+            bottom: 0;
+            width: 82px;
+            height: 175px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            z-index: 15;
+            pointer-events: none;
+            filter: drop-shadow(0 12px 14px rgba(15, 23, 42, 0.28));
+        }
+        .intro-planter.left { left: min(85px, 8vw); }
+        .intro-planter.right { right: min(85px, 8vw); }
+
+        .intro-plant-leaves {
+            width: 104px;
+            height: 110px;
+            margin-bottom: -10px;
+            z-index: 2;
+            transform-origin: bottom center;
+            animation: gentleBreeze 4s ease-in-out infinite alternate;
+        }
+        .intro-planter.right .intro-plant-leaves {
+            animation-delay: -2s;
+        }
+
+        @keyframes gentleBreeze {
+            0% { transform: rotate(-1.5deg) scale(0.98); }
+            100% { transform: rotate(1.5deg) scale(1.02); }
+        }
+
+        /* Modern Ribbed Ceramic Pot */
+        .intro-pot-body {
+            position: relative;
+            width: 58px;
+            height: 72px;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #cbd5e1 100%);
+            border-radius: 4px 4px 10px 10px;
+            border: 1px solid #cbd5e1;
+            border-top: 3px solid #d4af37;
+            box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        .intro-pot-body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(180deg, transparent 0px, transparent 8px, rgba(212, 175, 55, 0.25) 9px);
+        }
+
+        /* Pulsing Enter Button */
+        .intro-btn {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateZ(45px);
+            background: linear-gradient(135deg, #0b1329 0%, #1e293b 100%);
+            color: #d4af37;
+            border: 1.5px solid #d4af37;
+            padding: 11px 24px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 24px rgba(11, 19, 41, 0.4), 0 0 15px rgba(212, 175, 55, 0.3);
+            pointer-events: auto;
+            cursor: pointer;
+            z-index: 30;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: introPulse 2s infinite;
+        }
+
+        @keyframes introPulse {
+            0% { transform: translate(-50%, -50%) translateZ(45px) scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { transform: translate(-50%, -50%) translateZ(45px) scale(1.04); box-shadow: 0 0 0 14px rgba(212, 175, 55, 0); }
+            100% { transform: translate(-50%, -50%) translateZ(45px) scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Subtle Marble Floor Strip & Shadow */
+        .intro-floor-base {
+            position: absolute;
+            bottom: -10px;
+            width: 95%;
+            height: 20px;
+            background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.25) 0%, transparent 75%);
+            pointer-events: none;
+        }
+
+        /* ==========================================
+           ORIGINAL WEBSITE CSS (COMPLETE & UNTOUCHED)
+           ========================================== */
         :root {
             --primary-dark: #0b1329;       /* Deep Official Corporate Navy */
             --primary-slate: #1e293b;      /* Elegant Slate */
@@ -35,6 +353,12 @@
             color: var(--text-main); 
             line-height: 1.6; 
             overflow-x: hidden;
+        }
+
+        /* Lock scrolling while intro overlay is open */
+        body.intro-active {
+            overflow: hidden;
+            height: 100vh;
         }
 
         /* Official Mesh Gradient Background */
@@ -535,8 +859,80 @@
         }
     </style>
 </head>
-<body>
+<body class="intro-active">
 
+    <!-- 3D LUXURY WHITE OFFICE ENTRANCE OVERLAY -->
+    <div id="intro-overlay">
+        <div class="intro-building-stage">
+            <!-- Modern White Building Wall / Facade -->
+            <div class="intro-facade"></div>
+            <div class="intro-cornice"></div>
+            <div class="intro-pillar left"></div>
+            <div class="intro-pillar right"></div>
+
+            <!-- Wall Sconce Warm Lighting -->
+            <div class="intro-sconce left"></div>
+            <div class="intro-sconce right"></div>
+
+            <!-- Luxury White & Gold Signboard -->
+            <div class="intro-signboard">
+                <div class="intro-signboard-title">R N CONSULTANCY</div>
+                <div class="intro-signboard-sub">Corporate & IT Solutions</div>
+            </div>
+            
+            <!-- Clickable Obsidian Black Doorway -->
+            <div class="intro-doors-wrapper" id="intro-doors-wrapper" title="Click Door to Enter Office">
+                <button type="button" class="intro-btn" id="intro-btn">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i> CLICK DOOR TO ENTER
+                </button>
+                
+                <div class="intro-door" id="intro-door-left">
+                    <div class="intro-handle"></div>
+                </div>
+                
+                <div class="intro-door" id="intro-door-right">
+                    <div class="intro-handle"></div>
+                </div>
+            </div>
+
+            <!-- Luxury Left Flower Pot & Plant -->
+            <div class="intro-planter left">
+                <svg class="intro-plant-leaves" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Lush Tropical Plant Leaves -->
+                    <path d="M50 100 Q46 65 30 45 Q22 35 15 38 Q25 50 38 68 Q46 82 50 100" fill="#15803d" opacity="0.9"/>
+                    <path d="M50 100 Q40 60 22 55 Q10 52 8 60 Q18 68 34 80 Q45 90 50 100" fill="#166534"/>
+                    <path d="M50 100 Q54 65 70 45 Q78 35 85 38 Q75 50 62 68 Q54 82 50 100" fill="#15803d" opacity="0.9"/>
+                    <path d="M50 100 Q60 60 78 55 Q90 52 92 60 Q82 68 66 80 Q55 90 50 100" fill="#166534"/>
+                    <path d="M50 100 Q48 55 42 28 Q38 12 50 8 Q56 18 52 38 Q50 65 50 100" fill="#22c55e"/>
+                    <path d="M50 100 Q52 55 58 28 Q62 12 50 8 Q44 18 48 38 Q50 65 50 100" fill="#15803d"/>
+                    <path d="M50 100 Q46 75 35 60 Q28 50 24 55 Q32 65 40 80 Z" fill="#4ade80"/>
+                    <path d="M50 100 Q54 75 65 60 Q72 50 76 55 Q68 65 60 80 Z" fill="#4ade80"/>
+                </svg>
+                <div class="intro-pot-body"></div>
+            </div>
+
+            <!-- Luxury Right Flower Pot & Plant -->
+            <div class="intro-planter right">
+                <svg class="intro-plant-leaves" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Lush Tropical Plant Leaves -->
+                    <path d="M50 100 Q46 65 30 45 Q22 35 15 38 Q25 50 38 68 Q46 82 50 100" fill="#15803d" opacity="0.9"/>
+                    <path d="M50 100 Q40 60 22 55 Q10 52 8 60 Q18 68 34 80 Q45 90 50 100" fill="#166534"/>
+                    <path d="M50 100 Q54 65 70 45 Q78 35 85 38 Q75 50 62 68 Q54 82 50 100" fill="#15803d" opacity="0.9"/>
+                    <path d="M50 100 Q60 60 78 55 Q90 52 92 60 Q82 68 66 80 Q55 90 50 100" fill="#166534"/>
+                    <path d="M50 100 Q48 55 42 28 Q38 12 50 8 Q56 18 52 38 Q50 65 50 100" fill="#22c55e"/>
+                    <path d="M50 100 Q52 55 58 28 Q62 12 50 8 Q44 18 48 38 Q50 65 50 100" fill="#15803d"/>
+                    <path d="M50 100 Q46 75 35 60 Q28 50 24 55 Q32 65 40 80 Z" fill="#4ade80"/>
+                    <path d="M50 100 Q54 75 65 60 Q72 50 76 55 Q68 65 60 80 Z" fill="#4ade80"/>
+                </svg>
+                <div class="intro-pot-body"></div>
+            </div>
+
+            <!-- Soft Floor Shadow Base -->
+            <div class="intro-floor-base"></div>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT (UNTOUCHED) -->
     <div class="page-bg-mesh"></div>
 
     <!-- Header Navigation -->
@@ -762,6 +1158,60 @@
         <p style="margin-top: 4px; font-size: 12px; opacity: 0.8;">Designed & Developed by Hitesh Kolhe (RN Consultancy)</p>
     </footer>
 
+    <!-- GSAP for 3D Intro Door Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const introDoorsWrapper = document.getElementById('intro-doors-wrapper');
+        const introOverlay = document.getElementById('intro-overlay');
+        const introBtn = document.getElementById('intro-btn');
+        const introBuilding = document.querySelector('.intro-building-stage');
+        let introOpened = false;
+
+        function triggerDoorOpen() {
+            if (introOpened) return;
+            introOpened = true;
+
+            const tl = gsap.timeline();
+            
+            // 1. Hide the pulsing badge
+            tl.to(introBtn, { opacity: 0, scale: 0.85, duration: 0.25 });
+            
+            // 2. Swing both glass doors open smoothly in 3D
+            tl.to('#intro-door-left', { rotateY: -105, duration: 1.4, ease: "power2.inOut" }, 'openDoors');
+            tl.to('#intro-door-right', { rotateY: 105, duration: 1.4, ease: "power2.inOut" }, 'openDoors');
+            
+            // 3. Cinematic Fly-through zoom right through the entrance
+            tl.to(introBuilding, { 
+                scale: 18, 
+                opacity: 0, 
+                duration: 1.6, 
+                ease: "power2.in" 
+            }, 'openDoors+=0.3');
+            
+            // 4. Fade out overlay and restore smooth scrolling to the website
+            tl.to(introOverlay, {
+                opacity: 0,
+                duration: 0.4,
+                ease: "power1.out",
+                onComplete: () => {
+                    introOverlay.style.display = 'none';
+                    document.body.classList.remove('intro-active');
+                }
+            }, "-=0.3");
+        }
+
+        if (introDoorsWrapper) {
+            introDoorsWrapper.addEventListener('click', triggerDoorOpen);
+        }
+        if (introBtn) {
+            introBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                triggerDoorOpen();
+            });
+        }
+    </script>
+
+    <!-- ORIGINAL JAVASCRIPT FOR WEBSITE (COMPLETE & ERROR-FREE) -->
     <script>
         // TYPEWRITER ANIMATION LOGIC FOR HERO TEXT
         const animatedWords = ["Smart Compliance & IT", "Legal Filings & Safety", "Web Growth Platforms"];
@@ -769,6 +1219,7 @@
         const targetElement = document.getElementById("typewriterTarget");
 
         function typeLoop() {
+            if (!targetElement) return;
             const currentWord = animatedWords[wordIdx];
             if (isDeletingWord) {
                 targetElement.textContent = currentWord.substring(0, charIdx - 1);
@@ -796,21 +1247,25 @@
         // Mobile Drawer Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
 
         // Interactive Service Pills Selection logic inside Quote Box
         function selectPill(serviceValue, element) {
             document.querySelectorAll('.service-pill-item').forEach(p => p.classList.remove('active'));
-            element.classList.add('active');
+            if (element) {
+                element.classList.add('active');
+            }
             setService(serviceValue);
         }
 
         // Synchronize dropdown selection
         function setService(serviceValue) {
             const serviceDropdown = document.getElementById('service');
-            if(serviceDropdown && serviceValue) {
+            if (serviceDropdown && serviceValue) {
                 serviceDropdown.value = serviceValue;
             }
         }
@@ -820,37 +1275,39 @@
         const submitBtn = document.getElementById("submitBtn");
         const formStatus = document.getElementById("formStatus");
 
-        form.addEventListener("submit", async function(e) {
-            e.preventDefault();
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Submitting Inquiry... <i class="fa-solid fa-spinner fa-spin"></i>';
-            formStatus.className = "form-status";
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
+        if (form) {
+            form.addEventListener("submit", async function(e) {
+                e.preventDefault();
+                
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Submitting Inquiry... <i class="fa-solid fa-spinner fa-spin"></i>';
+                formStatus.className = "form-status";
+                
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
 
-                if (response.ok) {
-                    formStatus.textContent = "Thank you! Your quote request has been transmitted safely.";
-                    formStatus.classList.add("success");
-                    form.reset();
-                    document.querySelectorAll('.service-pill-item').forEach(p => p.classList.remove('active'));
-                } else {
-                    formStatus.textContent = "There was an error submitting your form. Please try again.";
+                    if (response.ok) {
+                        formStatus.textContent = "Thank you! Your quote request has been transmitted safely.";
+                        formStatus.classList.add("success");
+                        form.reset();
+                        document.querySelectorAll('.service-pill-item').forEach(p => p.classList.remove('active'));
+                    } else {
+                        formStatus.textContent = "There was an error submitting your form. Please try again.";
+                        formStatus.classList.add("error");
+                    }
+                } catch (error) {
+                    formStatus.textContent = "Network error. Please check your internet connection.";
                     formStatus.classList.add("error");
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Submit Inquiry & Quote <i class="fa-solid fa-paper-plane"></i>';
                 }
-            } catch (error) {
-                formStatus.textContent = "Network error. Please check your internet connection.";
-                formStatus.classList.add("error");
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = 'Submit Inquiry & Quote <i class="fa-solid fa-paper-plane"></i>';
-            }
-        });
+            });
+        }
     </script>
 </body>
 </html>
