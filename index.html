@@ -9,7 +9,25 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Instant check before render to prevent any flicker when returning to the main page -->
+    <script>
+        (function() {
+            if (sessionStorage.getItem('rn_door_opened') === 'true') {
+                document.documentElement.classList.add('door-already-opened');
+            }
+        })();
+    </script>
+
     <style>
+        /* When already opened, hide the intro instantly without delay */
+        html.door-already-opened #intro-overlay {
+            display: none !important;
+        }
+        html.door-already-opened body.intro-active {
+            overflow: auto !important;
+            height: auto !important;
+        }
+
         /* ==========================================
            3D LUXURY WHITE OFFICE ENTRANCE OVERLAY CSS
            ========================================== */
@@ -1156,6 +1174,9 @@
     <footer>
         <p>&copy; 2026 RN Consultancy. All Corporate Rights Reserved.</p>
         <p style="margin-top: 4px; font-size: 12px; opacity: 0.8;">Designed & Developed by Hitesh Kolhe (RN Consultancy)</p>
+        <p style="margin-top: 8px;">
+            <a href="javascript:void(0)" onclick="replayDoorAnimation()" style="color: #64748b; font-size: 11px; text-decoration: underline; opacity: 0.85;">Replay 3D Office Entrance</a>
+        </p>
     </footer>
 
     <!-- GSAP for 3D Intro Door Animation -->
@@ -1167,9 +1188,18 @@
         const introBuilding = document.querySelector('.intro-building-stage');
         let introOpened = false;
 
+        // Check if user has already entered in this browsing session
+        if (sessionStorage.getItem('rn_door_opened') === 'true') {
+            introOpened = true;
+            if (introOverlay) introOverlay.style.display = 'none';
+            document.body.classList.remove('intro-active');
+        }
+
         function triggerDoorOpen() {
             if (introOpened) return;
             introOpened = true;
+            // Save state so it never prompts again during this visit
+            sessionStorage.setItem('rn_door_opened', 'true');
 
             const tl = gsap.timeline();
             
@@ -1198,6 +1228,12 @@
                     document.body.classList.remove('intro-active');
                 }
             }, "-=0.3");
+        }
+
+        // Allow re-testing or replaying the door entrance if needed
+        function replayDoorAnimation() {
+            sessionStorage.removeItem('rn_door_opened');
+            location.reload();
         }
 
         if (introDoorsWrapper) {
