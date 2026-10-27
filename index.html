@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RN Consultancy | Corporate Compliance & IT Solutions</title>
+    <title>RN Consultancy | Next-Gen Corporate Compliance & Digital IT Portal</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Cinzel, Plus Jakarta Sans, Space Grotesk, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Instant check before render to prevent any flicker when returning to the main page -->
     <script>
         (function() {
             if (sessionStorage.getItem('rn_door_opened') === 'true') {
@@ -19,7 +20,6 @@
     </script>
 
     <style>
-        /* When already opened, hide the intro instantly without delay */
         html.door-already-opened #intro-overlay {
             display: none !important;
         }
@@ -28,9 +28,6 @@
             height: auto !important;
         }
 
-        /* ==========================================
-           3D LUXURY WHITE OFFICE ENTRANCE OVERLAY CSS
-           ========================================== */
         #intro-overlay {
             position: fixed;
             top: 0;
@@ -59,7 +56,6 @@
             will-change: transform, opacity;
         }
 
-        /* Modern White Architectural Building Wall */
         .intro-facade {
             position: absolute;
             inset: 0;
@@ -70,7 +66,6 @@
             overflow: hidden;
         }
 
-        /* Architectural Fluted / Slatted Wall Texture on Sides */
         .intro-facade::before {
             content: '';
             position: absolute;
@@ -79,7 +74,6 @@
             opacity: 0.85;
         }
 
-        /* Architectural Wall Trim & Top Cornice */
         .intro-cornice {
             position: absolute;
             top: 0;
@@ -92,7 +86,6 @@
             z-index: 6;
         }
 
-        /* Architectural White Pillars */
         .intro-pillar {
             position: absolute;
             top: 18px;
@@ -107,7 +100,6 @@
         .intro-pillar.left { left: 42px; }
         .intro-pillar.right { right: 42px; }
 
-        /* Modern Wall Sconce Lights (Warm Up & Down Glow) */
         .intro-sconce {
             position: absolute;
             top: 140px;
@@ -139,7 +131,6 @@
             background: radial-gradient(ellipse at top, rgba(254, 240, 138, 0.4) 0%, transparent 70%);
         }
 
-        /* Luxury White & Gold Signboard */
         .intro-signboard {
             position: absolute;
             top: 36px;
@@ -177,7 +168,6 @@
             text-align: center;
         }
 
-        /* Doorway Frame & Portal (Surrounded by white wall) */
         .intro-doors-wrapper {
             position: relative;
             width: min(390px, 76%);
@@ -194,7 +184,6 @@
             margin-bottom: 0;
         }
 
-        /* Deep Obsidian Black Doors */
         .intro-door {
             position: absolute;
             top: 0;
@@ -206,14 +195,10 @@
             overflow: hidden;
         }
 
-        /* Glossy Dark Glass Reflection */
         .intro-door::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.03) 38%, transparent 65%);
             pointer-events: none;
         }
@@ -234,7 +219,6 @@
             box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.35);
         }
 
-        /* Sleek Vertical Luxury Gold Handles */
         .intro-handle {
             position: absolute;
             top: 50%;
@@ -249,7 +233,6 @@
         #intro-door-left .intro-handle { right: 14px; }
         #intro-door-right .intro-handle { left: 14px; }
 
-        /* LUXURY FLOWER POTS (PLANTERS WITH LUSH BOTANICALS) */
         .intro-planter {
             position: absolute;
             bottom: 0;
@@ -283,7 +266,6 @@
             100% { transform: rotate(1.5deg) scale(1.02); }
         }
 
-        /* Modern Ribbed Ceramic Pot */
         .intro-pot-body {
             position: relative;
             width: 58px;
@@ -302,7 +284,6 @@
             background: repeating-linear-gradient(180deg, transparent 0px, transparent 8px, rgba(212, 175, 55, 0.25) 9px);
         }
 
-        /* Pulsing Enter Button */
         .intro-btn {
             position: absolute;
             top: 52%;
@@ -333,7 +314,6 @@
             100% { transform: translate(-50%, -50%) translateZ(45px) scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
-        /* Subtle Marble Floor Strip & Shadow */
         .intro-floor-base {
             position: absolute;
             bottom: -10px;
@@ -343,475 +323,872 @@
             pointer-events: none;
         }
 
-        /* ==========================================
-           ORIGINAL WEBSITE CSS (COMPLETE & UNTOUCHED)
-           ========================================== */
         :root {
-            --primary-dark: #0b1329;       /* Deep Official Corporate Navy */
-            --primary-slate: #1e293b;      /* Elegant Slate */
-            --accent: #2563eb;             /* Royal Corporate Blue */
-            --accent-glow: #3b82f6;
-            --accent-hover: #1d4ed8;
-            
-            --bg-main: #f1f5f9;
-            --surface-white: #ffffff;
-            --card-border: #e2e8f0;
-            
-            --text-main: #0f172a;
+            --bg-base: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.88);
+            --bg-card-hover: rgba(255, 255, 255, 0.98);
+            --bg-alt: #f1f5f9;
+
+            --border-light: rgba(226, 232, 240, 0.9);
+            --border-glow: rgba(0, 190, 240, 0.45);
+            --border-blue: rgba(37, 99, 235, 0.3);
+
+            --text-heading: #091326;
+            --text-body: #475569;
             --text-muted: #64748b;
-            --shadow-soft: 0 10px 30px -5px rgba(11, 19, 41, 0.05);
-            --shadow-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.18);
-            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --text-accent: #0284c7;
+
+            --glow-cyan: #00d2f0;
+            --glow-blue: #2563eb;
+            --glow-indigo: #6366f1;
+            --glow-emerald: #10b981;
+            --glow-gold: #f59e0b;
+
+            --shadow-soft: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+            --shadow-glow: 0 14px 40px -10px rgba(0, 190, 240, 0.35), 0 0 20px rgba(37, 99, 235, 0.2);
+            --shadow-hover: 0 20px 45px -12px rgba(14, 165, 233, 0.3);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        
-        body { 
-            background-color: var(--bg-main); 
-            color: var(--text-main); 
-            line-height: 1.6; 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-body);
+            line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Lock scrolling while intro overlay is open */
         body.intro-active {
             overflow: hidden;
             height: 100vh;
         }
 
-        /* Official Mesh Gradient Background */
-        .page-bg-mesh {
+        .digital-light-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            pointer-events: none;
+            background: 
+                radial-gradient(circle at 12% 18%, rgba(0, 210, 240, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 88% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 65%, rgba(37, 99, 235, 0.08) 0%, transparent 55%),
+                radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.07) 0%, transparent 45%),
+                linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+        }
+
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -2;
+            pointer-events: none;
+            opacity: 0.65;
+            animation: orbFloat 14s ease-in-out infinite alternate;
+        }
+        .ambient-orb-1 {
+            width: 450px;
+            height: 450px;
+            top: 5%;
+            left: -100px;
+            background: radial-gradient(circle, rgba(0, 210, 240, 0.35) 0%, rgba(37, 99, 235, 0.15) 60%, transparent 75%);
+        }
+        .ambient-orb-2 {
+            width: 500px;
+            height: 500px;
+            bottom: 15%;
+            right: -120px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, rgba(0, 210, 240, 0.12) 65%, transparent 75%);
+            animation-duration: 18s;
+            animation-delay: -5s;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, 30px) scale(1.08); }
+            100% { transform: translate(-30px, -20px) scale(0.95); }
+        }
+
+        .digital-light-grid {
             position: fixed;
             inset: 0;
             z-index: -1;
             pointer-events: none;
-            background: 
-                radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 60%, rgba(15, 23, 42, 0.06) 0%, transparent 45%),
-                linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            background-image: 
+                linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, transparent 85%);
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.85) 0%, transparent 85%);
         }
 
-        /* Header */
-        header { 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8); 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        .digital-top-telemetry {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 190, 240, 0.25);
+            box-shadow: 0 2px 14px rgba(0, 210, 240, 0.08);
+            padding: 8px 24px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+            position: relative;
         }
-        .nav-container { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            max-width: 1240px; 
-            margin: 0 auto; 
-            padding: 16px 24px; 
-        }
-        
-        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .brand-logo-icon { 
-            width: 44px; 
-            height: 44px; 
-            background: linear-gradient(135deg, var(--primary-dark), var(--accent)); 
-            border-radius: 10px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #ffffff;
-            font-size: 20px;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-            transition: var(--transition);
-        }
-        .logo-wrapper:hover .brand-logo-icon { transform: rotate(-5deg) scale(1.05); }
 
-        .logo-title { font-size: 22px; font-weight: 800; color: var(--primary-dark); letter-spacing: -0.5px; }
-        .logo-title span { color: var(--accent); }
-        .logo-subtitle { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
-
-        .nav-links { display: flex; gap: 8px; align-items: center; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--text-muted); 
-            padding: 8px 18px; 
-            font-weight: 600; 
-            font-size: 14px; 
-            border-radius: 50px; 
-            transition: var(--transition); 
+        .telemetry-node {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #0f172a;
         }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); background: rgba(37, 99, 235, 0.08); }
-        
-        .nav-cta {
-            background: var(--accent) !important;
-            color: #ffffff !important;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
-        }
-        .nav-cta:hover { background: var(--accent-hover) !important; transform: translateY(-2px); }
 
-        .mobile-toggle { display: none; background: none; border: none; font-size: 22px; color: var(--primary-dark); cursor: pointer; }
-
-        /* Hero */
-        .hero { 
-            padding: 90px 24px 70px; 
-            max-width: 1240px;
-            margin: 0 auto;
-            text-align: center;
-            animation: textFadeUp 0.8s ease-out forwards;
+        .status-dot-pulse {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--glow-emerald);
+            box-shadow: 0 0 12px var(--glow-emerald);
+            animation: pulseGlowGreen 1.8s infinite;
         }
-        
-        .hero-badge {
+
+        @keyframes pulseGlowGreen {
+            0% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 6px var(--glow-emerald); }
+            50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 16px var(--glow-emerald); }
+            100% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 6px var(--glow-emerald); }
+        }
+
+        .telemetry-badges {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .telemetry-badge-item {
+            color: var(--text-accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
-            background: #ffffff;
-            border: 1px solid rgba(37, 99, 235, 0.2);
-            border-radius: 50px;
-            color: var(--accent);
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
-            background-size: 200% auto;
-            animation: shinyBadge 3s linear infinite;
+            gap: 5px;
         }
-        .hero-badge i { animation: pulseGlow 2s infinite; }
-
-        .hero h1 { 
-            font-size: 52px; 
-            font-weight: 800; 
-            line-height: 1.2; 
-            margin-bottom: 20px; 
-            color: var(--primary-dark); 
-            letter-spacing: -1.5px; 
+        .telemetry-badge-item i {
+            color: var(--glow-cyan);
+            filter: drop-shadow(0 0 6px var(--glow-cyan));
         }
 
-        /* Dynamic Typewriter Text */
-        .typewriter-text {
-            background: linear-gradient(135deg, var(--accent), var(--accent-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            border-right: 3px solid var(--accent);
-            padding-right: 5px;
-            animation: blinkCursor 0.75s infinite;
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04), 0 1px 0 rgba(0, 210, 240, 0.2);
         }
 
-        .hero p { 
-            font-size: 18px; 
-            color: var(--text-muted); 
-            margin-bottom: 36px; 
-            max-width: 700px; 
-            margin-left: auto; 
-            margin-right: auto; 
-            font-weight: 500; 
-            animation: textFadeUp 1s ease-out forwards;
-        }
-
-        .hero-actions { display: flex; gap: 14px; justify-content: center; }
-
-        .btn { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center;
-            gap: 10px; 
-            padding: 14px 30px; 
-            text-decoration: none; 
-            border-radius: 50px; 
-            font-weight: 700; 
-            font-size: 15px; 
-            transition: var(--transition); 
-            border: 1px solid transparent; 
-            cursor: pointer; 
-        }
-        .btn-primary { 
-            background: var(--accent); 
-            color: #ffffff; 
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
-        }
-        .btn-primary:hover { 
-            background: var(--accent-hover); 
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
-        }
-        .btn-secondary { 
-            background: var(--surface-white); 
-            color: var(--primary-dark); 
-            border-color: var(--card-border); 
-            box-shadow: var(--shadow-soft);
-        }
-        .btn-secondary:hover { 
-            background: #ffffff; 
-            transform: translateY(-3px);
-            border-color: var(--accent);
-        }
-
-        /* Services Grid */
-        .services { padding: 40px 24px 100px; max-width: 1240px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 60px; animation: textFadeUp 0.8s ease-out; }
-        .section-title h2 { font-size: 36px; font-weight: 800; color: var(--primary-dark); margin-bottom: 10px; letter-spacing: -0.5px; }
-        .section-title p { font-size: 16px; color: var(--text-muted); font-weight: 500; }
-
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 28px; 
-        }
-
-        .service-card { 
-            background: var(--surface-white); 
-            border: 1px solid var(--card-border); 
-            border-radius: 16px; 
-            overflow: hidden;
-            transition: var(--transition);
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 24px;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            box-shadow: var(--shadow-soft);
-            animation: textFadeUp 0.8s ease-out;
-        }
-        
-        .service-card:hover { 
-            transform: translateY(-8px); 
-            border-color: rgba(37, 99, 235, 0.4);
-            box-shadow: var(--shadow-hover);
+            align-items: center;
         }
 
-        .card-image-box {
-            position: relative;
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-        .card-image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease-out;
-        }
-        .service-card:hover .card-image-box img {
-            transform: scale(1.08);
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
         }
 
-        .icon-badge {
-            position: absolute;
-            bottom: -20px;
-            left: 24px;
-            width: 48px;
-            height: 48px;
-            background: var(--primary-dark);
-            color: #ffffff;
+        .brand-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #091326, #0284c7);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #ffffff;
             font-size: 20px;
-            box-shadow: 0 4px 12px rgba(11, 19, 41, 0.3);
-            border: 2px solid #ffffff;
-            transition: var(--transition);
+            box-shadow: 0 4px 18px rgba(0, 190, 240, 0.4), 0 0 10px rgba(37, 99, 235, 0.3);
+            border: 1px solid rgba(0, 210, 240, 0.5);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .service-card:hover .icon-badge {
-            background: var(--accent);
-            transform: rotate(-5deg);
+        .logo-wrapper:hover .brand-logo-icon {
+            transform: scale(1.08) rotate(-4deg);
+            box-shadow: 0 6px 25px rgba(0, 190, 240, 0.6);
         }
 
-        .card-body {
-            padding: 32px 24px 28px;
+        .logo-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
+        }
+        .logo-title span {
+            color: var(--glow-blue);
+            text-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--glow-gold);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            padding: 8px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.25s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-accent);
+            background: rgba(0, 210, 240, 0.1);
+            box-shadow: 0 0 15px rgba(0, 210, 240, 0.18);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 18px rgba(37, 99, 235, 0.35), 0 0 12px rgba(0, 210, 240, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 99, 235, 0.5), 0 0 20px rgba(0, 210, 240, 0.6);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--text-heading);
+            cursor: pointer;
+        }
+
+        .hero {
+            padding: 90px 24px 60px;
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 24px;
+            background: #ffffff;
+            border: 1.5px solid rgba(0, 210, 240, 0.6);
+            border-radius: 50px;
+            color: var(--text-accent);
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 20px rgba(0, 210, 240, 0.25), 0 0 12px rgba(37, 99, 235, 0.15);
+        }
+        .hero-badge-container i {
+            color: var(--glow-cyan);
+            filter: drop-shadow(0 0 8px var(--glow-cyan));
+            animation: pulseIcon 2s infinite alternate;
+        }
+
+        @keyframes pulseIcon {
+            0% { transform: scale(1); filter: drop-shadow(0 0 4px var(--glow-cyan)); }
+            100% { transform: scale(1.15); filter: drop-shadow(0 0 12px var(--glow-cyan)); }
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(34px, 5.5vw, 62px);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--text-heading);
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .typewriter-text {
+            background: linear-gradient(135deg, #0284c7 0%, #2563eb 60%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-right: 3px solid var(--glow-cyan);
+            padding-right: 6px;
+            filter: drop-shadow(0 0 15px rgba(0, 210, 240, 0.35));
+            animation: cursorBlink 0.75s infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--glow-cyan); }
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-body);
+            max-width: 740px;
+            margin: 0 auto 38px;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 34px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35), 0 0 20px rgba(0, 210, 240, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.45), 0 0 30px rgba(0, 210, 240, 0.5);
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: var(--text-heading);
+            border: 1.5px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+        }
+        .btn-secondary:hover {
+            border-color: var(--glow-cyan);
+            color: var(--text-accent);
+            box-shadow: 0 8px 25px rgba(0, 210, 240, 0.25);
+            transform: translateY(-3px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 26px 20px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--glow-cyan), var(--glow-blue), transparent);
+            opacity: 0.8;
+        }
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-glow);
+            box-shadow: var(--shadow-glow);
+            background: var(--bg-card-hover);
+        }
+
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #091326 40%, #0284c7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 700;
+            display: inline-block;
+            background: rgba(0, 210, 240, 0.12);
+            padding: 4px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 210, 240, 0.4);
+            box-shadow: 0 0 12px rgba(0, 210, 240, 0.2);
+        }
+        .section-title-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
+        }
+
+        .services-section {
+            padding: 70px 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .services-filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            color: var(--text-body);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.25s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #ffffff;
+            color: var(--text-accent);
+            border-color: var(--glow-cyan);
+            box-shadow: 0 0 20px rgba(0, 210, 240, 0.3), 0 4px 14px rgba(15, 23, 42, 0.05);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-glow);
+            box-shadow: var(--shadow-hover), 0 0 25px rgba(0, 210, 240, 0.2);
+            background: var(--bg-card-hover);
+        }
+
+        .card-media {
+            position: relative;
+            height: 190px;
+            overflow: hidden;
+        }
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .service-card:hover .card-media img {
+            transform: scale(1.08);
+        }
+
+        .card-tech-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(255, 255, 255, 0.95) 100%);
+        }
+
+        .card-cyber-icon {
+            position: absolute;
+            bottom: 14px;
+            left: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #ffffff;
+            border: 1.5px solid var(--glow-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-accent);
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(0, 210, 240, 0.35), 0 0 10px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s;
+        }
+        .service-card:hover .card-cyber-icon {
+            transform: scale(1.1) rotate(-5deg);
+            background: var(--glow-cyan);
+            color: #ffffff;
+            box-shadow: 0 0 22px var(--glow-cyan);
+        }
+
+        .card-digital-tag {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 210, 240, 0.4);
+            color: #0369a1;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(0, 210, 240, 0.2);
+        }
+
+        .card-content {
+            padding: 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
         }
 
-        .service-card h3 { font-size: 20px; color: var(--primary-dark); margin-bottom: 12px; font-weight: 700; transition: var(--transition); }
-        .service-card:hover h3 { color: var(--accent); }
-
-        .service-card p { font-size: 14.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
-
-        .read-more { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 8px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 14px; 
-            color: var(--accent);
-            margin-top: auto;
-            transition: var(--transition);
+        .card-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 21px;
+            color: var(--text-heading);
+            margin-bottom: 12px;
+            font-weight: 700;
+            transition: color 0.3s;
         }
-        .read-more i { transition: var(--transition); font-size: 12px; }
-        .service-card:hover .read-more { gap: 12px; }
-        .service-card:hover .read-more i { transform: translateX(6px); }
-
-        /* Contact Section */
-        .contact-section { 
-            padding: 100px 24px; 
-            background: #ffffff; 
-            border-top: 1px solid var(--card-border); 
-            position: relative;
-        }
-        .contact-wrapper { 
-            display: grid; 
-            grid-template-columns: 0.9fr 1.1fr; 
-            gap: 60px; 
-            max-width: 1240px; 
-            margin: 0 auto; 
-            align-items: center; 
+        .service-card:hover h3 {
+            color: var(--text-accent);
         }
 
-        .contact-info h2 { font-size: 40px; font-weight: 800; color: var(--primary-dark); margin-bottom: 16px; letter-spacing: -1px; animation: textFadeUp 0.8s ease-out; }
-        .contact-info p { color: var(--text-muted); margin-bottom: 36px; font-size: 16px; font-weight: 500; }
+        .card-content p {
+            font-size: 14px;
+            color: var(--text-body);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
 
-        .info-card-pill { 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
+        .card-features-list {
+            list-style: none;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .card-features-list li {
+            font-size: 13px;
+            color: var(--text-body);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        .card-features-list li i {
+            color: var(--glow-emerald);
+            font-size: 11px;
+            filter: drop-shadow(0 0 4px var(--glow-emerald));
+        }
+
+        .card-footer-action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-light);
+            padding-top: 16px;
+            gap: 12px;
+        }
+
+        .action-link {
+            color: var(--text-accent);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s;
+        }
+        .action-link:hover {
+            gap: 10px;
+            color: var(--glow-blue);
+            text-shadow: 0 0 10px rgba(0, 210, 240, 0.4);
+        }
+
+        .action-quote-btn {
+            background: rgba(0, 210, 240, 0.08);
+            border: 1px solid rgba(0, 210, 240, 0.35);
+            color: var(--text-heading);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .action-quote-btn:hover {
+            background: var(--glow-cyan);
+            color: #ffffff;
+            border-color: var(--glow-cyan);
+            box-shadow: 0 0 14px var(--glow-cyan);
+            transform: translateY(-2px);
+        }
+
+        .contact-section {
+            padding: 80px 24px 100px;
+            max-width: 1280px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info-col h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .contact-pill-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
             padding: 20px 24px;
-            background: var(--bg-main);
             border-radius: 16px;
-            margin-bottom: 20px; 
-            border: 1px solid var(--card-border);
-            transition: var(--transition);
+            margin-bottom: 18px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.25s;
         }
-        .info-card-pill:hover { transform: translateX(8px); border-color: var(--accent); background: #ffffff; box-shadow: var(--shadow-soft); }
-        .info-card-pill:hover .info-text-value { color: var(--accent); }
-        .info-card-pill i { 
-            font-size: 20px; 
-            color: var(--accent); 
-            background: #ffffff; 
-            width: 50px; 
-            height: 50px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: var(--transition);
+        .contact-pill-card:hover {
+            border-color: var(--glow-cyan);
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(0, 210, 240, 0.25);
+            background: #ffffff;
         }
-        .info-card-pill:hover i { transform: scale(1.1) rotate(-5deg); background: var(--accent); color: #ffffff; }
+        .contact-pill-card i {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 210, 240, 0.12);
+            color: var(--text-accent);
+            border: 1.5px solid rgba(0, 210, 240, 0.5);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 0 14px rgba(0, 210, 240, 0.25);
+        }
 
-        .info-text-value { transition: var(--transition); }
-
-        /* STYLISH QUOTE CONTAINER */
-        .quote-card-container { 
-            background: #ffffff; 
-            padding: 44px; 
-            border-radius: 28px; 
-            border: 1px solid rgba(37, 99, 235, 0.15); 
-            box-shadow: 0 25px 50px -12px rgba(11, 19, 41, 0.12);
+        .quote-glass-panel {
+            background: var(--bg-card);
+            border: 1.5px solid rgba(0, 210, 240, 0.45);
+            border-radius: 24px;
+            padding: 44px;
+            box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.12), 0 0 30px rgba(0, 210, 240, 0.2);
             position: relative;
-            overflow: hidden;
-            animation: textFadeUp 0.9s ease-out;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
-
-        /* Glowing Top Border Accent */
-        .quote-card-container::before {
+        .quote-glass-panel::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary-dark), var(--accent), var(--accent-glow));
+            height: 4px;
+            background: linear-gradient(90deg, var(--glow-cyan), var(--glow-blue), var(--glow-gold));
+            border-radius: 24px 24px 0 0;
         }
 
-        .quote-header { margin-bottom: 28px; }
-        .quote-header h3 { font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-bottom: 6px; }
-        .quote-header p { font-size: 14px; color: var(--text-muted); }
-
-        .service-pills-grid {
+        .service-pills-selector {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-bottom: 24px;
         }
-        .service-pill-item {
+
+        .pill-select-item {
             padding: 10px;
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            background: var(--bg-main);
-            text-align: center;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            background: #ffffff;
+            color: var(--text-body);
             font-size: 12px;
             font-weight: 700;
-            color: var(--text-muted);
+            text-align: center;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.25s;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 6px;
+            box-shadow: var(--shadow-soft);
         }
-        .service-pill-item i { font-size: 16px; color: var(--primary-dark); transition: var(--transition); }
-        
-        .service-pill-item:hover, .service-pill-item.active {
-            border-color: var(--accent);
-            background: rgba(37, 99, 235, 0.08);
-            color: var(--accent);
+        .pill-select-item:hover, .pill-select-item.active {
+            border-color: var(--glow-cyan);
+            background: rgba(0, 210, 240, 0.08);
+            color: var(--text-accent);
+            box-shadow: 0 0 15px rgba(0, 210, 240, 0.25);
             transform: translateY(-2px);
         }
-        .service-pill-item:hover i, .service-pill-item.active i { color: var(--accent); transform: scale(1.1); }
-
-        .input-group-stylish {
-            position: relative;
-            margin-bottom: 20px;
+        .pill-select-item i {
+            font-size: 15px;
+            color: #0284c7;
         }
-        .input-group-stylish i {
+
+        .cyber-input-group {
+            position: relative;
+            margin-bottom: 18px;
+        }
+        .cyber-input-group i {
             position: absolute;
-            left: 16px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
             color: #94a3b8;
             font-size: 16px;
-            transition: var(--transition);
+            transition: color 0.25s;
         }
-        .input-group-stylish textarea + i {
+        .cyber-input-group textarea + i {
             top: 22px;
             transform: none;
         }
 
-        .input-group-stylish input, .input-group-stylish select, .input-group-stylish textarea {
+        .cyber-input-group input, 
+        .cyber-input-group select, 
+        .cyber-input-group textarea {
             width: 100%;
-            padding: 14px 16px 14px 46px;
+            padding: 14px 16px 14px 48px;
+            background: #ffffff;
             border: 1.5px solid #cbd5e1;
             border-radius: 12px;
+            color: var(--text-heading);
             font-size: 14px;
             font-weight: 500;
-            background: #ffffff;
-            color: var(--primary-dark);
-            transition: var(--transition);
-        }
-
-        .input-group-stylish input:focus, .input-group-stylish select:focus, .input-group-stylish textarea:focus {
-            border-color: var(--accent);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+            transition: all 0.25s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
         }
-        .input-group-stylish input:focus + i, .input-group-stylish select:focus + i, .input-group-stylish textarea:focus + i {
-            color: var(--accent);
+        .cyber-input-group input:focus, 
+        .cyber-input-group select:focus, 
+        .cyber-input-group textarea:focus {
+            border-color: var(--glow-cyan);
+            box-shadow: 0 0 18px rgba(0, 210, 240, 0.35);
+        }
+        .cyber-input-group input:focus + i, 
+        .cyber-input-group select:focus + i, 
+        .cyber-input-group textarea:focus + i {
+            color: var(--text-accent);
+        }
+        .cyber-input-group textarea {
+            height: 95px;
+            resize: vertical;
         }
 
-        .input-group-stylish textarea { height: 100px; resize: vertical; }
-
-        .btn-quote-submit {
+        .btn-submit-cyber {
             width: 100%;
             padding: 16px;
             border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #0284c7, #2563eb);
+            color: #ffffff;
             font-size: 16px;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-dark), var(--accent));
-            color: #ffffff;
-            border: none;
             cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35), 0 0 15px rgba(0, 210, 240, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            transition: all 0.3s;
         }
-        .btn-quote-submit:hover {
+        .btn-submit-cyber:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5);
-            background: linear-gradient(135deg, var(--accent), var(--primary-dark));
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.45), 0 0 25px rgba(0, 210, 240, 0.5);
+            background: linear-gradient(135deg, #00d2f0, #0284c7);
         }
 
         .form-status {
@@ -819,86 +1196,94 @@
             padding: 12px;
             border-radius: 10px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 20px;
             text-align: center;
         }
-        .form-status.success { display: block; background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-        .form-status.error { display: block; background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+        .form-status.success { display: block; background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+        .form-status.error { display: block; background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
 
-        footer { 
-            background: var(--primary-dark); 
-            color: #94a3b8; 
-            text-align: center; 
-            padding: 36px 24px; 
-            font-size: 14px; 
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--border-light);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.02);
         }
 
-        /* TEXT ANIMATION KEYFRAMES */
-        @keyframes textFadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
+        .footer-replay-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            color: var(--text-accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            padding: 8px 20px;
+            border: 1px solid rgba(0, 210, 240, 0.4);
+            border-radius: 50px;
+            background: rgba(0, 210, 240, 0.08);
+            box-shadow: 0 0 12px rgba(0, 210, 240, 0.15);
+            transition: all 0.25s;
         }
-        @keyframes blinkCursor {
-            0%, 100% { border-color: transparent; }
-            50% { border-color: var(--accent); }
-        }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        @keyframes shinyBadge {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .footer-replay-link:hover {
+            background: var(--glow-cyan);
+            color: #ffffff;
+            box-shadow: 0 0 20px var(--glow-cyan);
         }
 
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .contact-wrapper { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 640px) {
-            .nav-links { 
-                display: none; 
+            .nav-links {
+                display: none;
                 position: absolute;
                 top: 100%; left: 0; right: 0;
                 background: #ffffff;
                 flex-direction: column;
-                padding: 20px;
-                border-bottom: 1px solid var(--card-border);
+                padding: 24px;
+                border-bottom: 1px solid var(--border-light);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.06);
             }
             .nav-links.active { display: flex; }
             .mobile-toggle { display: block; }
-            .hero h1 { font-size: 36px; }
             .services-grid { grid-template-columns: 1fr; }
-            .service-pills-grid { grid-template-columns: repeat(2, 1fr); }
-            .quote-card-container { padding: 28px 20px; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .service-pills-selector { grid-template-columns: repeat(2, 1fr); }
+            .quote-glass-panel { padding: 24px 18px; }
+            .hero h1 { font-size: 34px; }
+            .digital-top-telemetry { flex-direction: column; gap: 6px; text-align: center; }
+            .card-footer-action { flex-direction: column; align-items: flex-start; }
+            .action-quote-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body class="intro-active">
 
-    <!-- 3D LUXURY WHITE OFFICE ENTRANCE OVERLAY -->
+    <!-- 1. EXACT 3D LUXURY WHITE OFFICE ENTRANCE OVERLAY -->
     <div id="intro-overlay">
         <div class="intro-building-stage">
-            <!-- Modern White Building Wall / Facade -->
             <div class="intro-facade"></div>
             <div class="intro-cornice"></div>
             <div class="intro-pillar left"></div>
             <div class="intro-pillar right"></div>
 
-            <!-- Wall Sconce Warm Lighting -->
             <div class="intro-sconce left"></div>
             <div class="intro-sconce right"></div>
 
-            <!-- Luxury White & Gold Signboard -->
             <div class="intro-signboard">
                 <div class="intro-signboard-title">R N CONSULTANCY</div>
                 <div class="intro-signboard-sub">Corporate & IT Solutions</div>
             </div>
             
-            <!-- Clickable Obsidian Black Doorway -->
             <div class="intro-doors-wrapper" id="intro-doors-wrapper" title="Click Door to Enter Office">
                 <button type="button" class="intro-btn" id="intro-btn">
                     <i class="fa-solid fa-arrow-right-to-bracket"></i> CLICK DOOR TO ENTER
@@ -913,10 +1298,8 @@
                 </div>
             </div>
 
-            <!-- Luxury Left Flower Pot & Plant -->
             <div class="intro-planter left">
                 <svg class="intro-plant-leaves" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Lush Tropical Plant Leaves -->
                     <path d="M50 100 Q46 65 30 45 Q22 35 15 38 Q25 50 38 68 Q46 82 50 100" fill="#15803d" opacity="0.9"/>
                     <path d="M50 100 Q40 60 22 55 Q10 52 8 60 Q18 68 34 80 Q45 90 50 100" fill="#166534"/>
                     <path d="M50 100 Q54 65 70 45 Q78 35 85 38 Q75 50 62 68 Q54 82 50 100" fill="#15803d" opacity="0.9"/>
@@ -929,10 +1312,8 @@
                 <div class="intro-pot-body"></div>
             </div>
 
-            <!-- Luxury Right Flower Pot & Plant -->
             <div class="intro-planter right">
                 <svg class="intro-plant-leaves" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Lush Tropical Plant Leaves -->
                     <path d="M50 100 Q46 65 30 45 Q22 35 15 38 Q25 50 38 68 Q46 82 50 100" fill="#15803d" opacity="0.9"/>
                     <path d="M50 100 Q40 60 22 55 Q10 52 8 60 Q18 68 34 80 Q45 90 50 100" fill="#166534"/>
                     <path d="M50 100 Q54 65 70 45 Q78 35 85 38 Q75 50 62 68 Q54 82 50 100" fill="#15803d" opacity="0.9"/>
@@ -945,24 +1326,36 @@
                 <div class="intro-pot-body"></div>
             </div>
 
-            <!-- Soft Floor Shadow Base -->
             <div class="intro-floor-base"></div>
         </div>
     </div>
 
-    <!-- MAIN WEBSITE CONTENT (UNTOUCHED) -->
-    <div class="page-bg-mesh"></div>
+    <!-- 2. LIGHT LUXURY CORPORATE DIGITAL PORTAL -->
+    <div class="digital-light-bg"></div>
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="digital-light-grid"></div>
 
-    <!-- Header Navigation -->
+    <div class="digital-top-telemetry">
+        <div class="telemetry-node">
+            <span class="status-dot-pulse"></span>
+            <span>ALL DIGITAL FILING & REGULATORY GATEWAYS 100% OPERATIONAL</span>
+        </div>
+        <div class="telemetry-badges">
+            <span class="telemetry-badge-item"><i class="fa-solid fa-shield-halved"></i> 256-BIT SECURE</span>
+            <span class="telemetry-badge-item"><i class="fa-solid fa-bolt"></i> GOVT CCA CLASS 3 CERTIFIED</span>
+        </div>
+    </div>
+
     <header>
         <div class="nav-container">
             <a href="#hero" class="logo-wrapper">
                 <div class="brand-logo-icon">
-                    <i class="fa-solid fa-building-user"></i>
+                    <i class="fa-solid fa-network-wired"></i>
                 </div>
                 <div>
                     <div class="logo-title">RN <span>Consultancy</span></div>
-                    <div class="logo-subtitle">Corporate & IT Solutions</div>
+                    <div class="logo-subtitle">Corporate & IT Portal</div>
                 </div>
             </a>
             
@@ -971,200 +1364,302 @@
             <nav class="nav-links" id="navMenu">
                 <a href="#hero" class="active">Home</a>
                 <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
-                <a href="#contact" class="nav-cta" onclick="setService('General Quotation')">Get Quote</a>
+                <a href="#contact" class="nav-cta" onclick="setService('General Quotation')">Get Instant Quote</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="hero" class="hero">
-        <div class="hero-badge">
-            <i class="fa-solid fa-circle-check"></i> Authorized Corporate Advisory
+        <div class="hero-badge-container">
+            <i class="fa-solid fa-fingerprint"></i> NEXT-GEN DIGITAL ENTERPRISE SUITE
         </div>
         <h1>Empower Your Business With <br><span class="typewriter-text" id="typewriterTarget"></span></h1>
-        <p>India's trusted consultancy for labor compliance, digital signatures, modern web engineering, and enterprise insurance protections.</p>
+        <p>India's trusted intelligent platform for statutory labor compliance, CCA Class 3 digital signatures, modern web engineering, and enterprise insurance coverage.</p>
+        
         <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary" onclick="setService('General Quotation')"><i class="fa-solid fa-paper-plane"></i> Get A Quote</a>
-            <a href="#services" class="btn btn-secondary"><i class="fa-solid fa-layer-group"></i> View All Services</a>
+            <a href="#contact" class="btn btn-primary" onclick="setService('General Quotation')"><i class="fa-solid fa-paper-plane"></i> Get Free Quote</a>
+            <a href="#services" class="btn btn-secondary"><i class="fa-solid fa-layer-group"></i> Explore Services</a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-num" data-target="10000">10,000+</div>
+                <div class="stat-label">Filings Handled</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num" data-target="99">99.8%</div>
+                <div class="stat-label">Compliance Precision</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num" data-target="15">15+</div>
+                <div class="stat-label">Years Leadership</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">24 / 7</div>
+                <div class="stat-label">Digital Support</div>
+            </div>
         </div>
     </section>
 
-    <!-- Uniform Services Grid -->
-    <section id="services" class="services">
-        <div class="section-title">
-            <h2>Our Integrated Solutions</h2>
-            <p>Tailored corporate services engineered for compliance, security, and digital scale.</p>
+    <section id="services" class="services-section">
+        <div class="section-header">
+            <div class="section-tag">// ENTERPRISE PORTFOLIO</div>
+            <h2 class="section-title-text">Engineered Corporate Solutions</h2>
+        </div>
+
+        <div class="services-filter-bar">
+            <button class="filter-btn active" onclick="filterServices('all', this)">All Solutions</button>
+            <button class="filter-btn" onclick="filterServices('compliance', this)">Labor Compliance</button>
+            <button class="filter-btn" onclick="filterServices('tech', this)">Digital & IT</button>
+            <button class="filter-btn" onclick="filterServices('protection', this)">Risk & Insurance</button>
         </div>
         
-        <div class="services-grid">
-            <!-- Card 1 -->
-            <div class="service-card">
-                <div class="card-image-box">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop" alt="PF & ESIC Compliance">
-                    <div class="icon-badge"><i class="fa-solid fa-users-gear"></i></div>
+        <div class="services-grid" id="servicesGrid">
+            <!-- 1. PF & ESIC -> pf-esic.html (FIXED LINK) -->
+            <div class="service-card" data-category="compliance">
+                <div class="card-media">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop" alt="PF ESIC Compliance">
+                    <div class="card-tech-overlay"></div>
+                    <div class="card-cyber-icon"><i class="fa-solid fa-users-gear"></i></div>
+                    <div class="card-digital-tag">Statutory</div>
                 </div>
-                <div class="card-body">
-                    <h3>PF & ESIC Compliance</h3>
-                    <p>Complete labor compliance management including establishment registration, monthly challan filings, and employee KYC integrations.</p>
-                    <a href="pf-esic.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-content">
+                    <div>
+                        <h3>PF & ESIC Compliance</h3>
+                        <p>End-to-end statutory labor compliance, establishment registration, monthly challans, inspections, and automated KYC audits.</p>
+                        <ul class="card-features-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Monthly ECR & Challan Filing</li>
+                            <li><i class="fa-solid fa-circle-check"></i> UAN & KYC Bulk Integration</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Inspection & Hearing Advisory</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer-action">
+                        <a href="pf-esic.html" class="action-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" onclick="selectPill('PF & ESIC')" class="action-quote-btn"><i class="fa-solid fa-bolt"></i> Instant Quote</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="service-card">
-                <div class="card-image-box">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Digital Signature">
-                    <div class="icon-badge"><i class="fa-solid fa-file-signature"></i></div>
+            <!-- 2. DSC -> dsc.html -->
+            <div class="service-card" data-category="tech">
+                <div class="card-media">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Digital Signature Certificate">
+                    <div class="card-tech-overlay"></div>
+                    <div class="card-cyber-icon"><i class="fa-solid fa-file-signature"></i></div>
+                    <div class="card-digital-tag">Encrypted</div>
                 </div>
-                <div class="card-body">
-                    <h3>Digital Signature (DSC)</h3>
-                    <p>Government-approved CCA Class 3 Digital Signature Certificates issued rapidly for e-tendering and official document stamping.</p>
-                    <a href="dsc.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-content">
+                    <div>
+                        <h3>Digital Signature (DSC)</h3>
+                        <p>Government CCA Class 3 digital signature tokens for paperless e-tendering, MCA filings, GST, and corporate legal validity.</p>
+                        <ul class="card-features-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Class 3 Signing & Encryption</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Instant Video Verification (15 Mins)</li>
+                            <li><i class="fa-solid fa-circle-check"></i> FIPS Certified USB Crypto Tokens</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer-action">
+                        <a href="dsc.html" class="action-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" onclick="selectPill('DSC')" class="action-quote-btn"><i class="fa-solid fa-bolt"></i> Instant Quote</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="service-card">
-                <div class="card-image-box">
+            <!-- 3. Web Engineering -> web-dev.html -->
+            <div class="service-card" data-category="tech">
+                <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" alt="Web Development">
-                    <div class="icon-badge"><i class="fa-solid fa-code"></i></div>
+                    <div class="card-tech-overlay"></div>
+                    <div class="card-cyber-icon"><i class="fa-solid fa-code"></i></div>
+                    <div class="card-digital-tag">Full-Stack</div>
                 </div>
-                <div class="card-body">
-                    <h3>Web Engineering</h3>
-                    <p>High-speed, interactive dynamic websites and responsive web systems optimized to elevate your digital presence and brand equity.</p>
-                    <a href="web-dev.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-content">
+                    <div>
+                        <h3>Web Engineering</h3>
+                        <p>Ultra-fast responsive corporate web applications, modern UI/UX design, custom database architecture, and cybersecurity shielding.</p>
+                        <ul class="card-features-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Performance Optimized (&lt;1s Load)</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Mobile First & Modern SEO</li>
+                            <li><i class="fa-solid fa-circle-check"></i> CRM & API Integrations</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer-action">
+                        <a href="web-dev.html" class="action-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" onclick="selectPill('Web Development')" class="action-quote-btn"><i class="fa-solid fa-bolt"></i> Instant Quote</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 4 -->
-            <div class="service-card">
-                <div class="card-image-box">
+            <!-- 4. Health Insurance -> health-insurance.html -->
+            <div class="service-card" data-category="protection">
+                <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop" alt="Health Insurance">
-                    <div class="icon-badge"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div class="card-tech-overlay"></div>
+                    <div class="card-cyber-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div class="card-digital-tag">Coverage</div>
                 </div>
-                <div class="card-body">
-                    <h3>Health Insurance</h3>
-                    <p>Protect corporate teams and families with data-backed medical insurance advice featuring cashless hospital benefit networks.</p>
-                    <a href="health-insurance.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-content">
+                    <div>
+                        <h3>Corporate Health Shield</h3>
+                        <p>Comprehensive group medical coverage and family health protection plans with cashless admission across 10,000+ top hospitals.</p>
+                        <ul class="card-features-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Cashless Network Pre-approval</li>
+                            <li><i class="fa-solid fa-circle-check"></i> OPD & Pre-existing Day 1 Covers</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Dedicated Claim Desk Support</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer-action">
+                        <a href="health-insurance.html" class="action-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" onclick="selectPill('Health Insurance')" class="action-quote-btn"><i class="fa-solid fa-bolt"></i> Instant Quote</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 5 -->
-            <div class="service-card">
-                <div class="card-image-box">
+            <!-- 5. Vehicle Insurance -> vehicle-insurance.html -->
+            <div class="service-card" data-category="protection">
+                <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600&auto=format&fit=crop" alt="Vehicle Insurance">
-                    <div class="icon-badge"><i class="fa-solid fa-car"></i></div>
+                    <div class="card-tech-overlay"></div>
+                    <div class="card-cyber-icon"><i class="fa-solid fa-car"></i></div>
+                    <div class="card-digital-tag">Instant</div>
                 </div>
-                <div class="card-body">
-                    <h3>Vehicle Insurance</h3>
-                    <p>Immediate paperless auto insurance policy generation and fast renewals for individual vehicles and corporate fleets.</p>
-                    <a href="vehicle-insurance.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-content">
+                    <div>
+                        <h3>Vehicle & Fleet Insurance</h3>
+                        <p>Instant digital paperless policy issuance, zero-depreciation coverage, and rapid claims processing for corporate commercial fleets.</p>
+                        <ul class="card-features-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Zero Dep & Engine Protectors</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Fast Track Roadside Assistance</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Instant 2-Minute Renewal</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer-action">
+                        <a href="vehicle-insurance.html" class="action-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" onclick="selectPill('Vehicle Insurance')" class="action-quote-btn"><i class="fa-solid fa-bolt"></i> Instant Quote</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card 6 -->
-            <div class="service-card">
-                <div class="card-image-box">
+            <!-- 6. Digital Marketing -> digital-marketing.html -->
+            <div class="service-card" data-category="tech">
+                <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=600&auto=format&fit=crop" alt="Digital Marketing">
-                    <div class="icon-badge"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div class="card-tech-overlay"></div>
+                    <div class="card-cyber-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <div class="card-digital-tag">Growth</div>
                 </div>
-                <div class="card-body">
-                    <h3>Digital Marketing</h3>
-                    <p>Performance marketing, search engine optimization (SEO), and targeted ad campaign funnels engineered to convert local inquiries.</p>
-                    <a href="digital-marketing.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="card-content">
+                    <div>
+                        <h3>Digital Performance Growth</h3>
+                        <p>Targeted data-driven marketing funnels, high-converting Google Ads, Search Engine Optimization (SEO), and corporate branding.</p>
+                        <ul class="card-features-list">
+                            <li><i class="fa-solid fa-circle-check"></i> Google Ads & Meta Funnels</li>
+                            <li><i class="fa-solid fa-circle-check"></i> High Intent B2B Lead Conversion</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Transparent Real-time Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer-action">
+                        <a href="digital-marketing.html" class="action-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" onclick="selectPill('Digital Marketing')" class="action-quote-btn"><i class="fa-solid fa-bolt"></i> Instant Quote</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT & QUOTE SECTION -->
     <section id="contact" class="contact-section">
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <h2>Let's Start Your <br>Project Together</h2>
-                <p>Fill out our interactive quote form, and our regional specialist team will compile your estimate within 24 business hours.</p>
-                
-                <div class="info-card-pill">
+        <div class="contact-grid">
+            <div class="contact-info-col">
+                <h2>Initiate Your Next <br><span style="color:var(--text-accent); text-shadow: 0 0 20px rgba(0, 210, 240, 0.4);">Digital Transformation</span></h2>
+                <p style="color:var(--text-body); margin-bottom:30px; font-size:16px;">Transmit your requirements directly to our senior regulatory and engineering desks. We provide verified formal proposals within 24 hours.</p>
+
+                <div class="contact-pill-card">
                     <i class="fa-solid fa-envelope"></i>
                     <div>
-                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 700;">EMAIL CORPORATE DESK</div>
-                        <div class="info-text-value" style="font-weight: 800; color: var(--primary-dark);">info@rnconsultancy.com</div>
+                        <div style="font-size:11px; color:var(--text-muted); font-weight:700; font-family:'JetBrains Mono';">OFFICIAL DIRECTORY</div>
+                        <div style="font-size:16px; font-weight:800; color:var(--text-heading);">info@rnconsultancy.com</div>
                     </div>
                 </div>
 
-                <div class="info-card-pill">
+                <div class="contact-pill-card">
                     <i class="fa-solid fa-phone"></i>
                     <div>
-                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 700;">CALL DIRECT HELPLINE</div>
-                        <div class="info-text-value" style="font-weight: 800; color: var(--primary-dark);">+91 8180088343</div>
+                        <div style="font-size:11px; color:var(--text-muted); font-weight:700; font-family:'JetBrains Mono';">DIRECT HELPLINE</div>
+                        <div style="font-size:16px; font-weight:800; color:var(--text-heading);">+91 8180088343</div>
+                    </div>
+                </div>
+
+                <div class="contact-pill-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <div style="font-size:11px; color:var(--text-muted); font-weight:700; font-family:'JetBrains Mono';">REGULATORY ADVISORY OFFICE</div>
+                        <div style="font-size:14px; font-weight:700; color:var(--text-heading);">Hudkeshwar Road, Nagpur - 440034</div>
                     </div>
                 </div>
             </div>
 
-            <!-- STYLISH QUOTE BOX CARD -->
-            <div class="quote-card-container">
-                <div class="quote-header">
-                    <h3>Request Instant Quote</h3>
-                    <p>Select required service and submit details below</p>
+            <div class="quote-glass-panel">
+                <div style="margin-bottom:24px;">
+                    <h3 style="font-family:'Space Grotesk'; font-size:24px; color:var(--text-heading); margin-bottom:6px;">Request Smart Proposal</h3>
+                    <p style="font-size:14px; color:var(--text-muted);">Select service module and submit your contact profile</p>
                 </div>
 
                 <div id="formStatus" class="form-status"></div>
 
-                <!-- Interactive Service Option Pills Grid -->
-                <div class="service-pills-grid">
-                    <div class="service-pill-item" onclick="selectPill('PF & ESIC', this)">
+                <div class="service-pills-selector">
+                    <div class="pill-select-item" onclick="selectPill('PF & ESIC', this)">
                         <i class="fa-solid fa-users-gear"></i> PF & ESIC
                     </div>
-                    <div class="service-pill-item" onclick="selectPill('DSC', this)">
+                    <div class="pill-select-item" onclick="selectPill('DSC', this)">
                         <i class="fa-solid fa-file-signature"></i> DSC Signature
                     </div>
-                    <div class="service-pill-item" onclick="selectPill('Web Development', this)">
+                    <div class="pill-select-item" onclick="selectPill('Web Development', this)">
                         <i class="fa-solid fa-code"></i> Web Dev
                     </div>
-                    <div class="service-pill-item" onclick="selectPill('Health Insurance', this)">
+                    <div class="pill-select-item" onclick="selectPill('Health Insurance', this)">
                         <i class="fa-solid fa-heart-pulse"></i> Health Cover
                     </div>
-                    <div class="service-pill-item" onclick="selectPill('Vehicle Insurance', this)">
-                        <i class="fa-solid fa-car"></i> Auto Insurance
+                    <div class="pill-select-item" onclick="selectPill('Vehicle Insurance', this)">
+                        <i class="fa-solid fa-car"></i> Auto Fleet
                     </div>
-                    <div class="service-pill-item" onclick="selectPill('Digital Marketing', this)">
+                    <div class="pill-select-item" onclick="selectPill('Digital Marketing', this)">
                         <i class="fa-solid fa-bullhorn"></i> Marketing
                     </div>
                 </div>
 
                 <form id="inquiryForm" action="https://formspree.io/f/mykaaryp" method="POST">
-                    <div class="input-group-stylish">
-                        <input type="text" id="name" name="Full_Name" required placeholder="Full Name *">
+                    <div class="cyber-input-group">
+                        <input type="text" id="name" name="Full_Name" required placeholder="Full Name / Authorized Signatory *">
                         <i class="fa-solid fa-user"></i>
                     </div>
 
-                    <div class="input-group-stylish">
-                        <input type="tel" id="phone" name="Phone_Number" required placeholder="Mobile Number *">
+                    <div class="cyber-input-group">
+                        <input type="tel" id="phone" name="Phone_Number" required placeholder="Mobile / Direct Line *">
                         <i class="fa-solid fa-phone"></i>
                     </div>
 
-                    <div class="input-group-stylish">
+                    <div class="cyber-input-group">
                         <select id="service" name="Requested_Service" required>
-                            <option value="">-- Choose Required Service * --</option>
-                            <option value="PF & ESIC">PF & ESIC Compliance</option>
-                            <option value="DSC">DSC (Digital Signature)</option>
-                            <option value="Web Development">Web Development</option>
-                            <option value="Health Insurance">Health Insurance</option>
-                            <option value="Vehicle Insurance">Vehicle Insurance</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
-                            <option value="General Quotation">Custom Quotation</option>
+                            <option value="">-- Choose Module Category * --</option>
+                            <option value="PF & ESIC">PF & ESIC Labor Compliance</option>
+                            <option value="DSC">DSC Class 3 Digital Signature</option>
+                            <option value="Web Development">Full-Stack Web Engineering</option>
+                            <option value="Health Insurance">Group & Individual Health Cover</option>
+                            <option value="Vehicle Insurance">Corporate Fleet & Vehicle Insurance</option>
+                            <option value="Digital Marketing">Digital Marketing & SEO Funnel</option>
+                            <option value="General Quotation">Comprehensive Corporate Retainer</option>
                         </select>
                         <i class="fa-solid fa-list-check"></i>
                     </div>
 
-                    <div class="input-group-stylish">
-                        <textarea id="message" name="User_Message" placeholder="Describe your requirement in short..."></textarea>
+                    <div class="cyber-input-group">
+                        <textarea id="message" name="User_Message" placeholder="Specify requirements, headcount, or project milestones..."></textarea>
                         <i class="fa-solid fa-comment-dots"></i>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="btn-quote-submit">
-                        Submit Inquiry & Quote <i class="fa-solid fa-paper-plane"></i>
+                    <button type="submit" id="submitBtn" class="btn-submit-cyber">
+                        Transmit Proposal Request <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
@@ -1172,15 +1667,17 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 RN Consultancy. All Corporate Rights Reserved.</p>
-        <p style="margin-top: 4px; font-size: 12px; opacity: 0.8;">Designed & Developed by Hitesh Kolhe (RN Consultancy)</p>
-        <p style="margin-top: 8px;">
-            <a href="javascript:void(0)" onclick="replayDoorAnimation()" style="color: #64748b; font-size: 11px; text-decoration: underline; opacity: 0.85;">Replay 3D Office Entrance</a>
-        </p>
+        <p>&copy; 2026 RN Consultancy. All Corporate & Digital Rights Reserved.</p>
+        <p style="margin-top: 6px; font-size: 13px; color: var(--text-muted);">Designed & Developed by Hitesh Kolhe (RN Consultancy)</p>
+        <div>
+            <a href="javascript:void(0)" onclick="replayDoorAnimation()" class="footer-replay-link">
+                <i class="fa-solid fa-door-open"></i> Replay 3D Office Entrance
+            </a>
+        </div>
     </footer>
 
-    <!-- GSAP for 3D Intro Door Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <script>
         const introDoorsWrapper = document.getElementById('intro-doors-wrapper');
         const introOverlay = document.getElementById('intro-overlay');
@@ -1188,29 +1685,44 @@
         const introBuilding = document.querySelector('.intro-building-stage');
         let introOpened = false;
 
-        // Check if user has already entered in this browsing session
         if (sessionStorage.getItem('rn_door_opened') === 'true') {
             introOpened = true;
             if (introOverlay) introOverlay.style.display = 'none';
             document.body.classList.remove('intro-active');
         }
 
+        function playOpenChime() {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.4);
+                gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.4);
+            } catch (e) {}
+        }
+
         function triggerDoorOpen() {
             if (introOpened) return;
             introOpened = true;
-            // Save state so it never prompts again during this visit
             sessionStorage.setItem('rn_door_opened', 'true');
+            playOpenChime();
 
             const tl = gsap.timeline();
             
-            // 1. Hide the pulsing badge
             tl.to(introBtn, { opacity: 0, scale: 0.85, duration: 0.25 });
             
-            // 2. Swing both glass doors open smoothly in 3D
             tl.to('#intro-door-left', { rotateY: -105, duration: 1.4, ease: "power2.inOut" }, 'openDoors');
             tl.to('#intro-door-right', { rotateY: 105, duration: 1.4, ease: "power2.inOut" }, 'openDoors');
             
-            // 3. Cinematic Fly-through zoom right through the entrance
             tl.to(introBuilding, { 
                 scale: 18, 
                 opacity: 0, 
@@ -1218,7 +1730,6 @@
                 ease: "power2.in" 
             }, 'openDoors+=0.3');
             
-            // 4. Fade out overlay and restore smooth scrolling to the website
             tl.to(introOverlay, {
                 opacity: 0,
                 duration: 0.4,
@@ -1226,11 +1737,11 @@
                 onComplete: () => {
                     introOverlay.style.display = 'none';
                     document.body.classList.remove('intro-active');
+                    startMetricCounters();
                 }
             }, "-=0.3");
         }
 
-        // Allow re-testing or replaying the door entrance if needed
         function replayDoorAnimation() {
             sessionStorage.removeItem('rn_door_opened');
             location.reload();
@@ -1247,10 +1758,8 @@
         }
     </script>
 
-    <!-- ORIGINAL JAVASCRIPT FOR WEBSITE (COMPLETE & ERROR-FREE) -->
     <script>
-        // TYPEWRITER ANIMATION LOGIC FOR HERO TEXT
-        const animatedWords = ["Smart Compliance & IT", "Legal Filings & Safety", "Web Growth Platforms"];
+        const animatedWords = ["Intelligent Labor Compliance", "Government Approved DSC", "Modern Web Engineering", "Enterprise Shielding"];
         let wordIdx = 0, charIdx = 0, isDeletingWord = false;
         const targetElement = document.getElementById("typewriterTarget");
 
@@ -1268,7 +1777,7 @@
             let typeSpeed = isDeletingWord ? 40 : 80;
 
             if (!isDeletingWord && charIdx === currentWord.length) {
-                typeSpeed = 1800; 
+                typeSpeed = 2000; 
                 isDeletingWord = true;
             } else if (isDeletingWord && charIdx === 0) {
                 isDeletingWord = false;
@@ -1280,7 +1789,6 @@
         }
         document.addEventListener("DOMContentLoaded", typeLoop);
 
-        // Mobile Drawer Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         if (menuToggle && navMenu) {
@@ -1289,16 +1797,56 @@
             });
         }
 
-        // Interactive Service Pills Selection logic inside Quote Box
+        function filterServices(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function startMetricCounters() {
+            const counters = document.querySelectorAll('.stat-num[data-target]');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const suffix = target === 99 ? '.8%' : '+';
+                let count = 0;
+                const increment = Math.ceil(target / 45);
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        counter.textContent = (target === 10000 ? '10,000' : target) + suffix;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = (target === 10000 ? count.toLocaleString() : count) + suffix;
+                    }
+                }, 30);
+            });
+        }
+        if (sessionStorage.getItem('rn_door_opened') === 'true') {
+            startMetricCounters();
+        }
+
         function selectPill(serviceValue, element) {
-            document.querySelectorAll('.service-pill-item').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.pill-select-item').forEach(p => p.classList.remove('active'));
             if (element) {
                 element.classList.add('active');
+            } else {
+                document.querySelectorAll('.pill-select-item').forEach(p => {
+                    if (p.textContent.trim().includes(serviceValue)) {
+                        p.classList.add('active');
+                    }
+                });
             }
             setService(serviceValue);
         }
 
-        // Synchronize dropdown selection
         function setService(serviceValue) {
             const serviceDropdown = document.getElementById('service');
             if (serviceDropdown && serviceValue) {
@@ -1306,7 +1854,6 @@
             }
         }
 
-        // Asynchronous Lead Capture Submission
         const form = document.getElementById("inquiryForm");
         const submitBtn = document.getElementById("submitBtn");
         const formStatus = document.getElementById("formStatus");
@@ -1314,9 +1861,8 @@
         if (form) {
             form.addEventListener("submit", async function(e) {
                 e.preventDefault();
-                
                 submitBtn.disabled = true;
-                submitBtn.innerHTML = 'Submitting Inquiry... <i class="fa-solid fa-spinner fa-spin"></i>';
+                submitBtn.innerHTML = 'Transmitting Data... <i class="fa-solid fa-spinner fa-spin"></i>';
                 formStatus.className = "form-status";
                 
                 try {
@@ -1330,7 +1876,7 @@
                         formStatus.textContent = "Thank you! Your quote request has been transmitted safely.";
                         formStatus.classList.add("success");
                         form.reset();
-                        document.querySelectorAll('.service-pill-item').forEach(p => p.classList.remove('active'));
+                        document.querySelectorAll('.pill-select-item').forEach(p => p.classList.remove('active'));
                     } else {
                         formStatus.textContent = "There was an error submitting your form. Please try again.";
                         formStatus.classList.add("error");
@@ -1340,7 +1886,7 @@
                     formStatus.classList.add("error");
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.innerHTML = 'Submit Inquiry & Quote <i class="fa-solid fa-paper-plane"></i>';
+                    submitBtn.innerHTML = 'Transmit Proposal Request <i class="fa-solid fa-paper-plane"></i>';
                 }
             });
         }
